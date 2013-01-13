@@ -11,8 +11,8 @@ License: WTFPL
 
 /*
 
-				DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-					Version 2, December 2004
+		DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+			Version 2, December 2004
 
  Copyright (C) 2004 Sam Hocevar <sam@hocevar.net>
 
@@ -87,12 +87,12 @@ class mb_untappd extends WP_Widget {
 	}
 
 	public function getTransient( $transient ) {
-		if ( false === ( $variable = get_transient( $transient ) ) ) {
-			$variable = json_decode( wp_remote_retrieve_body( wp_remote_get( 'FILL ME IN' ) ) );
-			set_transient( $transient, $variable, 60*60 );
+		if ( false === ( $brew = get_transient( $transient ) ) ) {
+			$brew = json_decode( wp_remote_retrieve_body( wp_remote_get( 'FILL ME IN' ) ) );
+			set_transient( $transient, $brew, 60*60 );
 		}
-		return $variable;
+		return $brew;
 	}
 }
 // Have a nice day!
-$Variable = new class_name;
+$BeerMe = new mb_untappd;
