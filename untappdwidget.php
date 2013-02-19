@@ -10,7 +10,6 @@ License: WTFPL
 */
 
 /*
-
 		DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
 			Version 2, December 2004
 
@@ -25,17 +24,26 @@ License: WTFPL
 
   0. You just DO WHAT THE FUCK YOU WANT TO.
 
-
 */
 
-add_action( 'widgets_init', 'rbc_register_widgets' );
+add_action( 'widgets_init', 'mb_register_widgets' );
 /**
  * register widgets
  */
-function rbc_register_widgets() {
+function mb_register_widgets() {
 	register_widget( 'mb_untappd' );
 }
+add_action('plugins_loaded', 'mb_untappd_init');
+/**
+ * Register and load our textdomain
+ */
+function mb_untappd_init() {
+  load_plugin_textdomain( 'mb_untappd', false, dirname( plugin_basename( __FILE__ ) ) );
+}
 
+/**
+ * Extend our class and create our new widget
+ */
 class mb_untappd extends WP_Widget {
 
 	//process the new widget
@@ -47,7 +55,7 @@ class mb_untappd extends WP_Widget {
 		$this->WP_Widget( 'mb_untappd', __( 'Untappd Recent Checkins', 'mb_untappd' ), $widget_ops );
 	}
 
-	 //build the widget settings form
+	//build the widget settings form
 	function form($instance) {
 		$defaults = array(
 			'title' => __( 'My recent Untappd Checkins', 'mb_untappd' ),
@@ -130,6 +138,15 @@ class mb_untappd extends WP_Widget {
 		echo $after_widget;
 	}
 
+	/**
+	 * Retrieve our Untappd API data, from a transient first, if available
+	 * @param  string $transient    the transient key to use
+	 * @param  string $username     the Untappd username to retrieve
+	 * @param  string $clientID     Untapped API Client ID key
+	 * @param  string $clientSecret Untapped API Client Secret key
+	 * @param  string $limit        How many recent checkins to retrieve
+	 * @return array               json-decoded data array from Untappd
+	 */
 	public function getTransient( $transient, $username, $clientID, $clientSecret, $limit ) {
 		if ( false === ( $brew = get_transient( $transient ) ) ) {
 			$url = 'http://api.untappd.com/v4/user/checkins/' . $username . '?client_id=' . $clientID . '&client_secret=' . $clientSecret . '&limit=' . $limit;
