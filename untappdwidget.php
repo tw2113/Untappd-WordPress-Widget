@@ -107,6 +107,9 @@ class mb_untappd extends WP_Widget {
 		if ( !empty( $instance['title'] ) ) { echo $before_title . $instance['title'] . $after_title; }
 		$limit = ( empty( $instance['limit'] ) ) ? 25 : $instance['limit'];
 
+		/*
+		These three fields are required to get data out of Untappd.
+		 */
 		if ( empty( $username ) ) {
 			$error = true;
 			echo '<p>Please provide a user ID</p>';
@@ -120,6 +123,9 @@ class mb_untappd extends WP_Widget {
 			echo '<p>Please provide a client Secret provided by Untappd</p>';
 		}
 
+		/*
+		Lets grab and display some data!
+		 */
 		if ( false === $error ) {
 			$transient = apply_filters( 'untapped_checkins_filter', 'untapped_checkins' );
 			$brews = $this->getTransient($transient, $username, $clientID, $clientSecret, $limit );
