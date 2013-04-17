@@ -56,7 +56,7 @@ class mb_untappd extends WP_Widget {
 	}
 
 	//build the widget settings form
-	function form($instance) {
+	function form( $instance ) {
 		$defaults = array(
 			'title' => __( 'My recent Untappd Checkins', 'mb_untappd' ),
 			'username' => '',
@@ -66,46 +66,60 @@ class mb_untappd extends WP_Widget {
 		);
 		$instance = wp_parse_args( (array) $instance, $defaults );
 
-		$title = trim( $instance['title'] );
-		$username = trim( $instance['username'] );
-		$clientID = trim( $instance['clientID'] );
-		$clientSecret = trim( $instance['clientSecret'] );
-		$limit = trim( $instance['limit'] );
+		$title = trim( strip_tags( $instance['title'] ) );
+		$username = trim( strip_tags( $instance['username'] ) );
+		$clientID = trim( strip_tags( $instance['clientID'] ) );
+		$clientSecret = trim( strip_tags( $instance['clientSecret'] ) );
+		$limit = trim( strip_tags( $instance['limit'] ) );
 		?>
-			<p><label><?php __('Title:', 'mb_untappd' ); ?><input class="widefat" name="<?php echo $this->get_field_name( 'title' ); ?>"  type="text" value="<?php echo esc_attr( $title ); ?>" /></label></p>
-			<p><label><?php __('Username:', 'mb_untappd' ); ?><input class="widefat" name="<?php echo $this->get_field_name( 'username' ); ?>"  type="text" value="<?php echo esc_attr( $username ); ?>" /></label></p>
-			<p><label><?php __('Client Key:', 'mb_untappd' ); ?><input class="widefat" name="<?php echo $this->get_field_name( 'clientID' ); ?>"  type="text" value="<?php echo esc_attr( $clientID ); ?>" /></label></p>
-			<p><label><?php __('Client Secret:', 'mb_untappd' ); ?><input class="widefat" name="<?php echo $this->get_field_name( 'clientSecret' ); ?>"  type="text" value="<?php echo esc_attr( $clientSecret ); ?>" /></label></p>
-			<p><label><?php __('Limit (default: 25, max: 50):', 'mb_untappd' ); ?> <input class="widefat" name="<?php echo $this->get_field_name( 'limit' ); ?>"  type="text" value="<?php echo esc_attr( $limit ); ?>" /></label></p>
+			<p><label><?php __('Title:', 'mb_untappd' ); ?>
+			<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>"  type="text" value="<?php echo esc_attr( $title ); ?>" />
+			</p>
+			<p><label><?php __('Username:', 'mb_untappd' ); ?></label>
+			<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'username' ) ); ?>"  type="text" value="<?php echo esc_attr( $username ); ?>" />
+			</p>
+			<p><label><?php __('Client Key:', 'mb_untappd' ); ?></label>
+			<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'clientID' ) ); ?>"  type="text" value="<?php echo esc_attr( $clientID ); ?>" />
+			</p>
+			<p><label><?php __('Client Secret:', 'mb_untappd' ); ?></label>
+			<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'clientSecret' ) ); ?>"  type="text" value="<?php echo esc_attr( $clientSecret ); ?>" />
+			</p>
+			<p><label><?php __('Limit (default: 25, max: 50):', 'mb_untappd' ); ?></label>
+			<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'limit' ) ); ?>"  type="text" value="<?php echo esc_attr( $limit ); ?>" />
+			</p>
 		<?php
 	}
 
 	//save the widget settings
-	function update($new_instance, $old_instance) {
+	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
-		$instance['title'] = $new_instance['title'];
-		$instance['username'] = $new_instance['username'];
-		$instance['clientID'] = $new_instance['clientID'];
-		$instance['clientSecret'] = $new_instance['clientSecret'];
-		$instance['limit'] = $new_instance['limit'];
+		$instance['title'] = trim( strip_tags( $new_instance['title'] ) );
+		$instance['username'] = trim( strip_tags( $new_instance['username'] ) );
+		$instance['clientID'] = trim( strip_tags( $new_instance['clientID'] ) );
+		$instance['clientSecret'] = trim( strip_tags( $new_instance['clientSecret'] ) );
+		$instance['limit'] = trim( strip_tags( $new_instance['limit'] ) );
 
 		return $instance;
 	}
 
 	//display the widget
-	function widget($args, $instance) {
-		extract($args);
+	function widget( $args, $instance ) {
+		extract( $args );
 
-		$username = $instance['username'];
-		$clientID = $instance['clientID'];
-		$clientSecret = $instance['clientSecret'];
-		$limit = $instance['limit'];
+		$title = trim( strip_tags( $instance['title'] ) );
+		$username = trim( strip_tags( $instance['username'] ) );
+		$clientID = trim( strip_tags( $instance['clientID'] ) );
+		$clientSecret = trim( strip_tags( $instance['clientSecret'] ) );
+		$limit = trim( strip_tags( $instance['limit'] ) );
 		$error = false;
 
 		echo $before_widget;
 
-		if ( !empty( $instance['title'] ) ) { echo $before_title . $instance['title'] . $after_title; }
-		$limit = ( empty( $instance['limit'] ) ) ? 25 : $instance['limit'];
+		if ( !empty( $title ) ) {
+			echo $before_title . $title . $after_title;
+		}
+
+		$limit = ( empty( $limit ) ) ? '25' : $limit;
 
 		/*
 		These three fields are required to get data out of Untappd.
@@ -127,7 +141,7 @@ class mb_untappd extends WP_Widget {
 		Lets grab and display some data!
 		 */
 		if ( false === $error ) {
-			$transient = apply_filters( 'untapped_checkins_filter', 'untapped_checkins' );
+			$transient = apply_filters( 'untappd_checkins_filter', 'untappd_checkins' );
 			$brews = $this->getTransient($transient, $username, $clientID, $clientSecret, $limit );
 
 			if ( is_wp_error( $brews ) ) {
@@ -148,16 +162,16 @@ class mb_untappd extends WP_Widget {
 	 * Retrieve our Untappd API data, from a transient first, if available
 	 * @param  string $transient    the transient key to use
 	 * @param  string $username     the Untappd username to retrieve
-	 * @param  string $clientID     Untapped API Client ID key
-	 * @param  string $clientSecret Untapped API Client Secret key
+	 * @param  string $clientID     Untappd API Client ID key
+	 * @param  string $clientSecret Untappd API Client Secret key
 	 * @param  string $limit        How many recent checkins to retrieve
-	 * @return array               json-decoded data array from Untappd
+	 * @return array               	json-decoded data array from Untappd
 	 */
 	public function getTransient( $transient, $username, $clientID, $clientSecret, $limit ) {
 		if ( false === ( $brew = get_transient( $transient ) ) ) {
 			$url = 'http://api.untappd.com/v4/user/checkins/' . $username . '?client_id=' . $clientID . '&client_secret=' . $clientSecret . '&limit=' . $limit;
 			$brew = json_decode( wp_remote_retrieve_body( wp_remote_get( $url ) ) );
-			$duration = apply_filters( 'untapped_transient_duration', 60*10 );
+			$duration = apply_filters( 'untappd_transient_duration', 60*10 );
 			set_transient( $transient, $brew, $duration );
 		}
 		return $brew;
