@@ -3,7 +3,7 @@ Contributors: tw2113
 Tags: untappd, widgets, beer, social drinking
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 1
+Stable tag: 1.0.1
 License: WTFPL
 License URI: http://www.wtfpl.net/
 
@@ -49,9 +49,13 @@ None
 
 == Changelog ==
 
+= 1.0.1 =
+* Wasn't echoing widget labels with translations.
+
 = 1.0 =
 * Initial upload
 
 == Upgrade Notice ==
 
-none yet
+= 1.0.1 =
+* If you were wondering where labels for the widget were, and what to put where, this is a necessary update. Sorry!
