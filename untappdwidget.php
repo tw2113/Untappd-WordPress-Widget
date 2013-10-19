@@ -3,7 +3,7 @@
 Plugin Name: Untappd User Stream widget
 Plugin URI: http://michaelbox.net/
 Description: Displays recent Untappd checkins for a provided user.
-Version: 1.0
+Version: 1.0.1
 Author: Michael Beckwith
 Author URI: http://michaelbox.net
 License: WTFPL
@@ -72,19 +72,19 @@ class mb_untappd extends WP_Widget {
 		$clientSecret = trim( strip_tags( $instance['clientSecret'] ) );
 		$limit = trim( strip_tags( $instance['limit'] ) );
 		?>
-			<p><label><?php __('Title:', 'mb_untappd' ); ?>
+			<p><label><?php _e('Title:', 'mb_untappd' ); ?>
 			<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>"  type="text" value="<?php echo esc_attr( $title ); ?>" />
 			</p>
-			<p><label><?php __('Username:', 'mb_untappd' ); ?></label>
+			<p><label><?php _e('Username:', 'mb_untappd' ); ?></label>
 			<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'username' ) ); ?>"  type="text" value="<?php echo esc_attr( $username ); ?>" />
 			</p>
-			<p><label><?php __('Client Key:', 'mb_untappd' ); ?></label>
+			<p><label><?php _e('Client Key:', 'mb_untappd' ); ?></label>
 			<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'clientID' ) ); ?>"  type="text" value="<?php echo esc_attr( $clientID ); ?>" />
 			</p>
-			<p><label><?php __('Client Secret:', 'mb_untappd' ); ?></label>
+			<p><label><?php _e('Client Secret:', 'mb_untappd' ); ?></label>
 			<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'clientSecret' ) ); ?>"  type="text" value="<?php echo esc_attr( $clientSecret ); ?>" />
 			</p>
-			<p><label><?php __('Limit (default: 25, max: 50):', 'mb_untappd' ); ?></label>
+			<p><label><?php _e('Limit (default: 25, max: 50):', 'mb_untappd' ); ?></label>
 			<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'limit' ) ); ?>"  type="text" value="<?php echo esc_attr( $limit ); ?>" />
 			</p>
 		<?php
