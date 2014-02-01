@@ -182,7 +182,11 @@ class mb_untappd extends WP_Widget {
 			$url = 'http://api.untappd.com/v4/user/checkins/' . $username . '?client_id=' . $clientID . '&client_secret=' . $clientSecret . '&limit=' . $limit;
 			$brew = json_decode( wp_remote_retrieve_body( wp_remote_get( $url ) ) );
 			$duration = apply_filters( 'untappd_transient_duration', 60*10 );
-			set_transient( $transient, $brew, $duration );
+
+			//Save only if we get a good response back.
+			if ( '200' == $brew->meta->code ) {
+				set_transient( $transient, $brew, $duration );
+			}
 		}
 		return $brew;
 	}
