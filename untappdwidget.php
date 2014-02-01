@@ -7,6 +7,7 @@ Version: 1.0.1
 Author: Michael Beckwith
 Author URI: http://michaelbox.net
 License: WTFPL
+Text Domain: mb_untappd
 */
 
 /*
