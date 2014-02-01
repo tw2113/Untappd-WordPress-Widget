@@ -156,7 +156,15 @@ class mb_untappd extends WP_Widget {
 					$classes = implode( ', ', apply_filters( 'untappd_checkins_list_classes', array( 'untappd_checkins' ) ) );
 					echo '<ul class="' . $classes . '">';
 					foreach ( $brews->response->checkins->items as $pint ) {
-						echo '<li>I had a <a href="https://untappd.com/beer/' . $pint->beer->bid . '">' . $pint->beer->beer_name . '</a> by <a href="https://untappd.com/brewery/' . $pint->brewery->brewery_id . '">' . $pint->brewery->brewery_name . '</a> at ' . date( get_option('date_format'), strtotime( $pint->created_at ) ) . ' <a href="https://untappd.com/user/' . $pint->user->user_name . '/checkin' . $pint->checkin_id . '" title="' . esc_attr__( 'View checkin details on Untappd\'s website', 'mb_untappd' ) . '">Details</a>';
+						echo '<li>' . sprintf( __( 'I had a %s by %s on %s %s', 'mb_untappd' ),
+							'<a href="https://untappd.com/beer/' . $pint->beer->bid . '">' . $pint->beer->beer_name . '</a>',
+							'<a href="https://untappd.com/brewery/' . $pint->brewery->brewery_id . '">' . $pint->brewery->brewery_name . '</a>',
+							date( get_option('date_format'), strtotime( $pint->created_at ) ),
+							sprintf( __( '%sDetails%s', 'mb_untappd' ),
+								'<a href="https://untappd.com/user/' . $pint->user->user_name . '/checkin/' . $pint->checkin_id . '" title="' . esc_attr__( 'View checkin details on Untappd\'s website', 'mb_untappd' ) . '">',
+								'</a>'
+							)
+						);
 					}
 					echo '</ul>';
 				} else {
