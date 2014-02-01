@@ -123,15 +123,21 @@ class mb_untappd extends WP_Widget {
 		 */
 		if ( empty( $username ) ) {
 			$error = true;
-			echo '<p>Please provide a user ID</p>';
+			if ( current_user_can( 'manage_options' ) ) {
+				echo '<p>' . __( 'Please provide a user ID', 'mb_untappd' ) . '</p>';
+			}
 		}
 		if ( empty( $clientID ) ) {
 			$error = true;
-			echo '<p>Please provide a client ID provided by Untappd</p>';
+			if ( current_user_can( 'manage_options' ) ) {
+				echo '<p>' . __( 'Please provide a client ID provided by Untappd', 'mb_untappd' ) . '</p>';
+			}
 		}
 		if ( empty( $clientSecret ) ) {
 			$error = true;
-			echo '<p>Please provide a client Secret provided by Untappd</p>';
+			if ( current_user_can( 'manage_options' ) ) {
+				echo '<p>' . __( 'Please provide a client Secret provided by Untappd', 'mb_untappd' ) . '</p>';
+			}
 		}
 
 		/*
