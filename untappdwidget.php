@@ -102,6 +102,7 @@ class mb_untappd extends WP_Widget {
 
 	//display the widget
 	function widget( $args, $instance ) {
+		//Used for $before_*, after_* etc. Not our instance values
 		extract( $args );
 
         $title          = trim( strip_tags( $instance['title'] ) );
