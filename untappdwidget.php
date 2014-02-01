@@ -72,20 +72,20 @@ class mb_untappd extends WP_Widget {
 		$clientSecret = trim( strip_tags( $instance['clientSecret'] ) );
 		$limit = trim( strip_tags( $instance['limit'] ) );
 		?>
-			<p><label><?php _e('Title:', 'mb_untappd' ); ?>
-			<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>"  type="text" value="<?php echo esc_attr( $title ); ?>" />
+			<p><label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e('Title:', 'mb_untappd' ); ?></label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 			</p>
-			<p><label><?php _e('Username:', 'mb_untappd' ); ?></label>
-			<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'username' ) ); ?>"  type="text" value="<?php echo esc_attr( $username ); ?>" />
+			<p><label for="<?php echo esc_attr( $this->get_field_id( 'username' ) ); ?>"><?php _e('Username:', 'mb_untappd' ); ?></label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'username' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'username' ) ); ?>"  type="text" value="<?php echo esc_attr( $username ); ?>" />
 			</p>
-			<p><label><?php _e('Client Key:', 'mb_untappd' ); ?></label>
-			<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'clientID' ) ); ?>"  type="text" value="<?php echo esc_attr( $clientID ); ?>" />
+			<p><label for="<?php echo esc_attr( $this->get_field_id( 'clientID' ) ); ?>"><?php _e('Client Key:', 'mb_untappd' ); ?></label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'clientID' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'clientID' ) ); ?>"  type="text" value="<?php echo esc_attr( $clientID ); ?>" />
 			</p>
-			<p><label><?php _e('Client Secret:', 'mb_untappd' ); ?></label>
-			<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'clientSecret' ) ); ?>"  type="text" value="<?php echo esc_attr( $clientSecret ); ?>" />
+			<p><label for="<?php echo esc_attr( $this->get_field_id( 'clientSecret' ) ); ?>"><?php _e('Client Secret:', 'mb_untappd' ); ?></label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'clientSecret' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'clientSecret' ) ); ?>"  type="text" value="<?php echo esc_attr( $clientSecret ); ?>" />
 			</p>
-			<p><label><?php _e('Limit (default: 25, max: 50):', 'mb_untappd' ); ?></label>
-			<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'limit' ) ); ?>"  type="text" value="<?php echo esc_attr( $limit ); ?>" />
+			<p><label for="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"><?php _e('Limit (default: 25, max: 50):', 'mb_untappd' ); ?></label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'limit' ) ); ?>"  type="text" value="<?php echo esc_attr( $limit ); ?>" />
 			</p>
 		<?php
 	}
