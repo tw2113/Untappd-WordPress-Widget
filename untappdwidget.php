@@ -47,12 +47,9 @@ function mb_untappd_init() {
 class mb_untappd extends WP_Widget {
 
 	//process the new widget
-	function mb_untappd() {
-		$widget_ops = array(
-			'classname' => '',
-			'description' => __( 'Display recent Untappd Checkins', 'mb_untappd' )
-			);
-		$this->WP_Widget( 'mb_untappd', __( 'Untappd Recent Checkins', 'mb_untappd' ), $widget_ops );
+	function __construct() {
+		$widget_ops = array('classname' => '', 'description' => __( 'Display recent Untappd Checkins', 'mb_untappd' ) );
+		parent::__construct('mb_untappd', __( 'Untappd Recent Checkins', 'mb_untappd' ), $widget_ops );
 	}
 
 	//build the widget settings form
