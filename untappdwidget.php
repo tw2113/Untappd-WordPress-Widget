@@ -39,7 +39,7 @@ add_action( 'plugins_loaded', 'mb_untappd_init' );
  * Register and load our textdomain
  */
 function mb_untappd_init() {
-  load_plugin_textdomain( 'mb_untappd', false, dirname( plugin_basename( __FILE__ ) ) );
+  load_plugin_textdomain( 'mb_untappd', false, dirname( plugin_basename( __FILE__ ) . '/languages/' ) );
 }
 
 /**
