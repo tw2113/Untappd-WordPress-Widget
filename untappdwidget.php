@@ -145,7 +145,7 @@ class mb_untappd extends WP_Widget {
 		 */
 		if ( false === $error ) {
 			$transient = apply_filters( 'untappd_checkins_filter', 'untappd_checkins' );
-			$brews = $this->getTransient($transient, $username, $clientID, $clientSecret, $limit );
+			$brews = $this->getTransient( $transient, $username, $clientID, $clientSecret, $limit );
 
 			if ( is_wp_error( $brews ) ) {
 				echo $brews->get_error_message();
