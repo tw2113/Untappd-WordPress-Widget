@@ -26,6 +26,9 @@ name of the transient to use for the response caching.
 ### untappd_transient_duration
 how long to store the transients, in seconds
 	Default: 60*10 (10 minutes)
+### untappd_checkins_list_classes
+Classes applied to the `ul` tag
+	Default: untappd_checkins
 
 ##General Notes
 Translation ready but I still need to add .pot files.
