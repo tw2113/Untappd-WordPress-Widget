@@ -58,11 +58,11 @@ class mb_untappd extends WP_Widget {
 	//build the widget settings form
 	function form( $instance ) {
 		$defaults = array(
-			'title' => __( 'My recent Untappd Checkins', 'mb_untappd' ),
-			'username' => '',
-			'clientID' => '',
-			'clientSecret' => '',
-			'limit'
+            'title'             => __( 'My recent Untappd Checkins', 'mb_untappd' ),
+            'username'          => '',
+            'clientID'          => '',
+            'clientSecret'      => '',
+            'limit'             => ''
 		);
 		$instance = wp_parse_args( (array) $instance, $defaults );
 
