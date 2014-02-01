@@ -152,12 +152,16 @@ class mb_untappd extends WP_Widget {
 			if ( is_wp_error( $brews ) ) {
 				echo $brews->get_error_message();
 			} else {
-				$classes = implode( ', ', apply_filters( 'untappd_checkins_list_classes', array( 'untappd_checkins' ) ) );
-				echo '<ul class="' . $classes . '">';
-				foreach ( $brews->response->checkins->items as $pint ) {
-					echo '<li>I had a <a href="https://untappd.com/beer/' . $pint->beer->bid . '">' . $pint->beer->beer_name . '</a> by <a href="https://untappd.com/brewery/' . $pint->brewery->brewery_id . '">' . $pint->brewery->brewery_name . '</a> at ' . date( get_option('date_format'), strtotime( $pint->created_at ) ) . ' <a href="https://untappd.com/user/' . $pint->user->user_name . '/checkin' . $pint->checkin_id . '" title="' . esc_attr__( 'View checkin details on Untappd\'s website', 'mb_untappd' ) . '">Details</a>';
+				if ( '500' != $brews->meta->code ) {
+					$classes = implode( ', ', apply_filters( 'untappd_checkins_list_classes', array( 'untappd_checkins' ) ) );
+					echo '<ul class="' . $classes . '">';
+					foreach ( $brews->response->checkins->items as $pint ) {
+						echo '<li>I had a <a href="https://untappd.com/beer/' . $pint->beer->bid . '">' . $pint->beer->beer_name . '</a> by <a href="https://untappd.com/brewery/' . $pint->brewery->brewery_id . '">' . $pint->brewery->brewery_name . '</a> at ' . date( get_option('date_format'), strtotime( $pint->created_at ) ) . ' <a href="https://untappd.com/user/' . $pint->user->user_name . '/checkin' . $pint->checkin_id . '" title="' . esc_attr__( 'View checkin details on Untappd\'s website', 'mb_untappd' ) . '">Details</a>';
+					}
+					echo '</ul>';
+				} else {
+					echo '<p>' . __( 'Nothing to display yet', 'mb_untapped' ) . '</p>';
 				}
-				echo '</ul>';
 			}
 		}
 		//
