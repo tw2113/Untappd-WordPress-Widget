@@ -52,6 +52,14 @@ None
 
 == Changelog ==
 
+= 1.1 =
+* Fix various lingering issues with labels on the widget.
+* Added some missing strings for translations.
+* Added pot file for translating.
+* Adde filter for the classes applied to the unordered list.
+* Hide errors regarding API credentials for all non-admins.
+* Saves transient only when a status of 200 is returned by the Untappd API.
+
 = 1.0.1 =
 * Wasn't echoing widget labels with translations.
 
