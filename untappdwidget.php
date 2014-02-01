@@ -116,7 +116,7 @@ class mb_untappd extends WP_Widget {
 			echo $before_title . $title . $after_title;
 		}
 
-		$limit = ( !empty( $limit ) && is_numeric( $limit ) ) ? $limit : '25';
+		$limit = ( !empty( $limit ) && is_numeric( $limit ) ) ? absint( $limit ) : '25';
 
 		/*
 		These three fields are required to get data out of Untappd.
