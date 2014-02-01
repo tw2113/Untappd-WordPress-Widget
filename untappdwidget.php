@@ -89,12 +89,12 @@ class mb_untappd extends WP_Widget {
 
 	//save the widget settings
 	function update( $new_instance, $old_instance ) {
-		$instance = $old_instance;
-		$instance['title'] = trim( strip_tags( $new_instance['title'] ) );
-		$instance['username'] = trim( strip_tags( $new_instance['username'] ) );
-		$instance['clientID'] = trim( strip_tags( $new_instance['clientID'] ) );
-		$instance['clientSecret'] = trim( strip_tags( $new_instance['clientSecret'] ) );
-		$instance['limit'] = trim( strip_tags( $new_instance['limit'] ) );
+        $instance                   = $old_instance;
+        $instance['title']          = trim( strip_tags( $new_instance['title'] ) );
+        $instance['username']       = trim( strip_tags( $new_instance['username'] ) );
+        $instance['clientID']       = trim( strip_tags( $new_instance['clientID'] ) );
+        $instance['clientSecret']   = trim( strip_tags( $new_instance['clientSecret'] ) );
+        $instance['limit']          = trim( strip_tags( $new_instance['limit'] ) );
 
 		return $instance;
 	}
@@ -103,12 +103,12 @@ class mb_untappd extends WP_Widget {
 	function widget( $args, $instance ) {
 		extract( $args );
 
-		$title = trim( strip_tags( $instance['title'] ) );
-		$username = trim( strip_tags( $instance['username'] ) );
-		$clientID = trim( strip_tags( $instance['clientID'] ) );
-		$clientSecret = trim( strip_tags( $instance['clientSecret'] ) );
-		$limit = trim( strip_tags( $instance['limit'] ) );
-		$error = false;
+        $title          = trim( strip_tags( $instance['title'] ) );
+        $username       = trim( strip_tags( $instance['username'] ) );
+        $clientID       = trim( strip_tags( $instance['clientID'] ) );
+        $clientSecret   = trim( strip_tags( $instance['clientSecret'] ) );
+        $limit          = trim( strip_tags( $instance['limit'] ) );
+        $error          = false;
 
 		echo $before_widget;
 
