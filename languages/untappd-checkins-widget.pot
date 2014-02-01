@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Untappd User Stream widget\n"
-"POT-Creation-Date: 2014-02-01 16:33-0600\n"
-"PO-Revision-Date: 2014-02-01 16:36-0600\n"
+"POT-Creation-Date: 2014-02-01 17:03-0600\n"
+"PO-Revision-Date: 2014-02-01 17:03-0600\n"
 "Last-Translator: Michael Beckwith <michael.d.beckwith@gmail.com>\n"
 "Language-Team: Michael Beckwith <michael.d.beckwith@gmail.com>\n"
 "Language: en_EN\n"
@@ -62,6 +62,20 @@ msgstr ""
 msgid "Please provide a client Secret provided by Untappd"
 msgstr ""
 
-#: untappdwidget.php:158
+#: untappdwidget.php:159
+#, php-format
+msgid "I had a %s by %s on %s %s"
+msgstr ""
+
+#: untappdwidget.php:163
+#, php-format
+msgid "%sDetails%s"
+msgstr ""
+
+#: untappdwidget.php:164
 msgid "View checkin details on Untappd's website"
+msgstr ""
+
+#: untappdwidget.php:171
+msgid "Nothing to display yet"
 msgstr ""
