@@ -34,7 +34,7 @@ add_action( 'widgets_init', 'mb_register_widgets' );
 function mb_register_widgets() {
 	register_widget( 'mb_untappd' );
 }
-add_action('plugins_loaded', 'mb_untappd_init');
+add_action( 'plugins_loaded', 'mb_untappd_init' );
 /**
  * Register and load our textdomain
  */
