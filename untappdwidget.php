@@ -102,8 +102,6 @@ class mb_untappd extends WP_Widget {
 
 	//display the widget
 	function widget( $args, $instance ) {
-		//Used for $before_*, after_* etc. Not our instance values
-		extract( $args );
 
         $title          = trim( strip_tags( $instance['title'] ) );
         $username       = trim( strip_tags( $instance['username'] ) );
@@ -112,10 +110,10 @@ class mb_untappd extends WP_Widget {
         $limit          = trim( strip_tags( $instance['limit'] ) );
         $error          = false;
 
-		echo $before_widget;
+		echo $args['before_widget'];
 
 		if ( !empty( $title ) ) {
-			echo $before_title . $title . $after_title;
+			echo $args['before_title'] . $title . $args['after_title'];
 		}
 
 		$limit = ( !empty( $limit ) && is_numeric( $limit ) ) ? absint( $limit ) : '25';
