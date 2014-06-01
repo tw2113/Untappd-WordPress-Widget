@@ -159,19 +159,15 @@ class mb_untappd extends WP_Widget {
 			} else {
 				if ( !in_array( $brews->meta->code, array( '500', '404' ) ) ) {
 					$classes = implode( ', ', apply_filters( 'untappd_checkins_list_classes', array( 'untappd_checkins' ) ) );
-					echo '<ul class="' . $classes . '">';
-					foreach ( $brews->response->checkins->items as $pint ) {
-						echo '<li>' . sprintf( __( 'I had a %s by %s on %s %s', 'mb_untappd' ),
-							'<a href="https://untappd.com/beer/' . $pint->beer->bid . '">' . $pint->beer->beer_name . '</a>',
-							'<a href="https://untappd.com/brewery/' . $pint->brewery->brewery_id . '">' . $pint->brewery->brewery_name . '</a>',
-							date( get_option('date_format'), strtotime( $pint->created_at ) ),
-							sprintf( __( '%sDetails%s', 'mb_untappd' ),
-								'<a href="https://untappd.com/user/' . $pint->user->user_name . '/checkin/' . $pint->checkin_id . '" title="' . esc_attr__( 'View checkin details on Untappd\'s website', 'mb_untappd' ) . '">',
-								'</a>'
-							)
-						);
-					}
-					echo '</ul>';
+
+					$brew_data = array(
+						'brew_list' => $brews->response->checkins->items,
+						'classes' => $classes
+					);
+					$user_markup = apply_filters( 'untappd_user_markup', '', $brew_data );
+
+					echo ( '' !== $user_markup ) ? $user_markup : $this->brew_list( $brew_data );
+
 				} else {
 					echo '<p>' . __( 'Nothing to display yet', 'mb_untapped' ) . '</p>';
 				}
