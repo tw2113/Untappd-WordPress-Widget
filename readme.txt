@@ -29,10 +29,8 @@ how long to store the transients, in seconds
 ### untappd_checkins_list_classes
 Classes applied to the `ul` tag
 	Default: untappd_checkins
-
-##General Notes
-Translation ready but I still need to add .pot files.
-
+### untappd_user_markup
+Allows you to provide your own markup for the widget.
 
 == Installation ==
 
