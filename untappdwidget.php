@@ -82,7 +82,7 @@ class mb_untappd extends WP_Widget {
 			<p><label for="<?php echo esc_attr( $this->get_field_id( 'clientSecret' ) ); ?>"><?php _e('Client Secret:', 'mb_untappd' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'clientSecret' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'clientSecret' ) ); ?>"  type="text" value="<?php echo esc_attr( $clientSecret ); ?>" />
 			</p>
-			<p><label for="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"><?php _e('Limit (default: 25, max: 50):', 'mb_untappd' ); ?></label>
+			<p><label for="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"><?php _e('Listing limit (default: 25, max: 50):', 'mb_untappd' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'limit' ) ); ?>"  type="text" value="<?php echo esc_attr( $limit ); ?>" />
 			</p>
 		<?php
