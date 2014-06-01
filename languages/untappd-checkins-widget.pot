@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Untappd User Stream widget\n"
-"POT-Creation-Date: 2014-02-01 17:03-0600\n"
-"PO-Revision-Date: 2014-02-01 17:03-0600\n"
+"POT-Creation-Date: 2014-05-31 23:13-0600\n"
+"PO-Revision-Date: 2014-05-31 23:14-0600\n"
 "Last-Translator: Michael Beckwith <michael.d.beckwith@gmail.com>\n"
 "Language-Team: Michael Beckwith <michael.d.beckwith@gmail.com>\n"
 "Language: en_EN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.6.5\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -47,35 +47,35 @@ msgid "Client Secret:"
 msgstr ""
 
 #: untappdwidget.php:85
-msgid "Limit (default: 25, max: 50):"
+msgid "Listing limit (default: 25, max: 50):"
 msgstr ""
 
-#: untappdwidget.php:129
+#: untappdwidget.php:127
 msgid "Please provide a user ID"
 msgstr ""
 
-#: untappdwidget.php:135
+#: untappdwidget.php:133
 msgid "Please provide a client ID provided by Untappd"
 msgstr ""
 
-#: untappdwidget.php:141
+#: untappdwidget.php:139
 msgid "Please provide a client Secret provided by Untappd"
 msgstr ""
 
-#: untappdwidget.php:159
+#: untappdwidget.php:172
+msgid "Nothing to display yet"
+msgstr ""
+
+#: untappdwidget.php:190
 #, php-format
 msgid "I had a %s by %s on %s %s"
 msgstr ""
 
-#: untappdwidget.php:163
+#: untappdwidget.php:194
 #, php-format
 msgid "%sDetails%s"
 msgstr ""
 
-#: untappdwidget.php:164
+#: untappdwidget.php:195
 msgid "View checkin details on Untappd's website"
-msgstr ""
-
-#: untappdwidget.php:171
-msgid "Nothing to display yet"
 msgstr ""
