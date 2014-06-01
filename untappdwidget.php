@@ -64,11 +64,11 @@ class mb_untappd extends WP_Widget {
 		);
 		$instance = wp_parse_args( (array) $instance, $defaults );
 
-		$title = trim( strip_tags( $instance['title'] ) );
-		$username = trim( strip_tags( $instance['username'] ) );
-		$clientID = trim( strip_tags( $instance['clientID'] ) );
-		$clientSecret = trim( strip_tags( $instance['clientSecret'] ) );
-		$limit = trim( strip_tags( $instance['limit'] ) );
+        $title          = trim( strip_tags( $instance['title'] ) );
+        $username       = trim( strip_tags( $instance['username'] ) );
+        $clientID       = trim( strip_tags( $instance['clientID'] ) );
+        $clientSecret   = trim( strip_tags( $instance['clientSecret'] ) );
+        $limit          = trim( strip_tags( $instance['limit'] ) );
 		?>
 			<p><label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e('Title:', 'mb_untappd' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
