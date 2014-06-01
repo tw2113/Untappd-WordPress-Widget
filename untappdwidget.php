@@ -157,7 +157,7 @@ class mb_untappd extends WP_Widget {
 			if ( is_wp_error( $brews ) ) {
 				echo $brews->get_error_message();
 			} else {
-				if ( '500' != $brews->meta->code ) {
+				if ( !in_array( $brews->meta->code, array( '500', '404' ) ) ) {
 					$classes = implode( ', ', apply_filters( 'untappd_checkins_list_classes', array( 'untappd_checkins' ) ) );
 					echo '<ul class="' . $classes . '">';
 					foreach ( $brews->response->checkins->items as $pint ) {
