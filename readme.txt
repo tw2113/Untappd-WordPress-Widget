@@ -50,6 +50,10 @@ None
 
 == Changelog ==
 
+= 1.1.1 =
+* Text changes.
+* New filter: untappd_user_markup. Used to provide custom widget output if you want to override default.
+
 = 1.1 =
 * Fix various lingering issues with labels on the widget.
 * Added some missing strings for translations.
@@ -65,6 +69,10 @@ None
 * Initial upload
 
 == Upgrade Notice ==
+
+= 1.1.1 =
+* Text changes.
+* New filter: untappd_user_markup. Used to provide custom widget output if you want to override default.
 
 = 1.0.1 =
 * If you were wondering where labels for the widget were, and what to put where, this is a necessary update. Sorry!
