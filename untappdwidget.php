@@ -174,7 +174,33 @@ class mb_untappd extends WP_Widget {
 			}
 		}
 		//
-		echo $after_widget;
+		echo $args['after_widget'];
+	}
+
+	public function brew_list( $brew_data ) {
+		$brew_list_start = sprintf(
+			'<ul class="%s">',
+			$brew_data['classes']
+		);
+
+		$brew_list_listing = '';
+		foreach ( $brew_data['brew_list'] as $pint ) {
+			$brew_list_listing .= '<li>';
+			$brew_list_listing .= sprintf(
+				__( 'I had a %s by %s on %s %s', 'mb_untappd' ),
+				'<a href="https://untappd.com/beer/' . $pint->beer->bid . '">' . $pint->beer->beer_name . '</a>',
+				'<a href="https://untappd.com/brewery/' . $pint->brewery->brewery_id . '">' . $pint->brewery->brewery_name . '</a>',
+				date( get_option('date_format'), strtotime( $pint->created_at ) ),
+				sprintf( __( '%sDetails%s', 'mb_untappd' ),
+					'<a href="https://untappd.com/user/' . $pint->user->user_name . '/checkin/' . $pint->checkin_id . '" title="' . esc_attr__( 'View checkin details on Untappd\'s website', 'mb_untappd' ) . '">',
+					'</a>'
+				)
+			);
+		}
+
+		$brew_list_end = '</ul>';
+
+		return $brew_list_start . $brew_list_listing . $brew_list_end;
 	}
 
 	/**
