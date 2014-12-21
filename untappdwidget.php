@@ -3,7 +3,7 @@
 Plugin Name: Untappd User Stream widget
 Plugin URI: http://michaelbox.net/
 Description: Displays recent Untappd checkins for a provided user.
-Version: 1.1.1
+Version: 1.1.2
 Author: Michael Beckwith
 Author URI: http://michaelbox.net
 License: WTFPL

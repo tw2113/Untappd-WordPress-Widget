@@ -3,7 +3,7 @@ Contributors: tw2113
 Tags: untappd, widgets, beer, social drinking
 Requires at least: 3.5
 Tested up to: 3.9.1
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: WTFPL
 License URI: http://www.wtfpl.net/
 
@@ -50,6 +50,9 @@ None
 
 == Changelog ==
 
+= 1.1.2 =
+* Change from http to https for Untappd API request
+
 = 1.1.1 =
 * Text changes.
 * New filter: untappd_user_markup. Used to provide custom widget output if you want to override default.
@@ -69,6 +72,9 @@ None
 * Initial upload
 
 == Upgrade Notice ==
+
+= 1.1.2 =
+* Change from http to https for Untappd API request
 
 = 1.1.1 =
 * Text changes.
