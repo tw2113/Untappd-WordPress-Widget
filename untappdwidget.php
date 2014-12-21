@@ -212,7 +212,7 @@ class mb_untappd extends WP_Widget {
 	 */
 	public function getTransient( $trans_args = array() ) {
 		if ( false === ( $brew = get_transient( $trans_args['transient_name'] ) ) ) {
-			$url = 'http://api.untappd.com/v4/user/checkins/' . $trans_args['untappd_user'] . '?client_id=' . $trans_args['untappd_api_ID'] . '&client_secret=' . $trans_args['untappd_api_secret'] . '&limit=' . $trans_args['untappd_limit'];
+			$url = 'https://api.untappd.com/v4/user/checkins/' . $trans_args['untappd_user'] . '?client_id=' . $trans_args['untappd_api_ID'] . '&client_secret=' . $trans_args['untappd_api_secret'] . '&limit=' . $trans_args['untappd_limit'];
 			$brew = json_decode( wp_remote_retrieve_body( wp_remote_get( $url ) ) );
 			$duration = apply_filters( 'untappd_transient_duration', 60*10 );
 
