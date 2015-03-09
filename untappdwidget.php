@@ -56,36 +56,70 @@ class mb_untappd extends WP_Widget {
 
 	function form( $instance = array() ) {
 		$defaults = array(
-            'title'             => __( 'My recent Untappd Checkins', 'mb_untappd' ),
-            'username'          => '',
-            'clientID'          => '',
-            'clientSecret'      => '',
-            'limit'             => ''
+			'title'             => __( 'My recent Untappd Checkins', 'mb_untappd' ),
+			'username'          => '',
+			'clientID'          => '',
+			'clientSecret'      => '',
+			'limit'             => ''
 		);
 		$instance = wp_parse_args( (array) $instance, $defaults );
 
-        $title          = trim( strip_tags( $instance['title'] ) );
-        $username       = trim( strip_tags( $instance['username'] ) );
-        $clientID       = trim( strip_tags( $instance['clientID'] ) );
-        $clientSecret   = trim( strip_tags( $instance['clientSecret'] ) );
-        $limit          = trim( strip_tags( $instance['limit'] ) );
-		?>
-			<p><label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e('Title:', 'mb_untappd' ); ?></label>
-			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
-			</p>
-			<p><label for="<?php echo esc_attr( $this->get_field_id( 'username' ) ); ?>"><?php _e('Username:', 'mb_untappd' ); ?></label>
-			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'username' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'username' ) ); ?>"  type="text" value="<?php echo esc_attr( $username ); ?>" />
-			</p>
-			<p><label for="<?php echo esc_attr( $this->get_field_id( 'clientID' ) ); ?>"><?php _e('Client Key:', 'mb_untappd' ); ?></label>
-			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'clientID' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'clientID' ) ); ?>"  type="text" value="<?php echo esc_attr( $clientID ); ?>" />
-			</p>
-			<p><label for="<?php echo esc_attr( $this->get_field_id( 'clientSecret' ) ); ?>"><?php _e('Client Secret:', 'mb_untappd' ); ?></label>
-			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'clientSecret' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'clientSecret' ) ); ?>"  type="text" value="<?php echo esc_attr( $clientSecret ); ?>" />
-			</p>
-			<p><label for="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"><?php _e('Listing limit (default: 25, max: 50):', 'mb_untappd' ); ?></label>
-			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'limit' ) ); ?>"  type="text" value="<?php echo esc_attr( $limit ); ?>" />
-			</p>
-		<?php
+		$title          = trim( strip_tags( $instance['title'] ) );
+		$username       = trim( strip_tags( $instance['username'] ) );
+		$clientID       = trim( strip_tags( $instance['clientID'] ) );
+		$clientSecret   = trim( strip_tags( $instance['clientSecret'] ) );
+		$limit          = trim( strip_tags( $instance['limit'] ) );
+
+		$this->form_input(
+			array(
+				'label' => __( 'Title:', 'mb_untappd' ),
+				'name' => $this->get_field_name( 'title' ),
+				'id' => $this->get_field_id( 'title' ),
+				'type' => 'text',
+				'value' => $title
+			)
+		);
+
+		$this->form_input(
+			array(
+				'label' => __( 'Username:', 'mb_untappd' ),
+				'name' => $this->get_field_name( 'username' ),
+				'id' => $this->get_field_id( 'username' ),
+				'type' => 'text',
+				'value' => $username
+			)
+		);
+
+		$this->form_input(
+			array(
+				'label' => __( 'Client Key:', 'mb_untappd' ),
+				'name' => $this->get_field_name( 'clientID' ),
+				'id' => $this->get_field_id( 'clientID' ),
+				'type' => 'text',
+				'value' => $clientID
+			)
+		);
+
+		$this->form_input(
+			array(
+				'label' => __( 'Client Secret:', 'mb_untappd' ),
+				'name' => $this->get_field_name( 'clientSecret' ),
+				'id' => $this->get_field_id( 'clientSecret' ),
+				'type' => 'text',
+				'value' => $clientSecret
+			)
+		);
+
+		$this->form_input(
+			array(
+				'label' => __('Listing limit (default: 25, max: 50):', 'mb_untappd' ),
+				'name' => $this->get_field_name( 'limit' ),
+				'id' => $this->get_field_id( 'limit' ),
+				'type' => 'text',
+				'value' => $limit
+			)
+		);
+
 	}
 
 	function update( $new_instance = array(), $old_instance = array() ) {
