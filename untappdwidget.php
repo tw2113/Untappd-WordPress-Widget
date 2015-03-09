@@ -209,6 +209,11 @@ class mb_untappd extends WP_Widget {
 		echo $args['after_widget'];
 	}
 
+	/**
+	 * Render our unordered list for our brews.
+	 *
+	 * @return string $value Rendered list of brews.
+	 */
 	public function brew_list( $brew_data = array() ) {
 		$brew_list_start = sprintf(
 			'<ul class="%s">',
@@ -256,6 +261,15 @@ class mb_untappd extends WP_Widget {
 		return $brew;
 	}
 
+	/**
+	 * Render a form input for use in our form input.
+	 *
+	 * @since 1.1.3
+	 *
+	 * @param array $args Array of argus to use with the markup.
+	 *
+	 * @return string $value Rendered html input.
+	 */
 	function form_input( $args = array() ) {
 		$label = esc_attr( $args['label'] );
 		$name = esc_attr( $args['name'] );
