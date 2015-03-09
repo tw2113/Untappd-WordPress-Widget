@@ -54,7 +54,7 @@ class mb_untappd extends WP_Widget {
 		parent::__construct( 'mb_untappd', __( 'Untappd Recent Checkins', 'mb_untappd' ), $widget_ops );
 	}
 
-	function form( $instance ) {
+	function form( $instance = array() ) {
 		$defaults = array(
             'title'             => __( 'My recent Untappd Checkins', 'mb_untappd' ),
             'username'          => '',
@@ -88,25 +88,25 @@ class mb_untappd extends WP_Widget {
 		<?php
 	}
 
-	function update( $new_instance, $old_instance ) {
-        $instance                   = $old_instance;
-        $instance['title']          = trim( strip_tags( $new_instance['title'] ) );
-        $instance['username']       = trim( strip_tags( $new_instance['username'] ) );
-        $instance['clientID']       = trim( strip_tags( $new_instance['clientID'] ) );
-        $instance['clientSecret']   = trim( strip_tags( $new_instance['clientSecret'] ) );
-        $instance['limit']          = trim( strip_tags( $new_instance['limit'] ) );
+	function update( $new_instance = array(), $old_instance = array() ) {
+		$instance                   = $old_instance;
+		$instance['title']          = trim( strip_tags( $new_instance['title'] ) );
+		$instance['username']       = trim( strip_tags( $new_instance['username'] ) );
+		$instance['clientID']       = trim( strip_tags( $new_instance['clientID'] ) );
+		$instance['clientSecret']   = trim( strip_tags( $new_instance['clientSecret'] ) );
+		$instance['limit']          = trim( strip_tags( $new_instance['limit'] ) );
 
 		return $instance;
 	}
 
-	function widget( $args, $instance ) {
+	function widget( $args = array(), $instance = array() ) {
 
-        $title          = trim( strip_tags( $instance['title'] ) );
-        $username       = trim( strip_tags( $instance['username'] ) );
-        $clientID       = trim( strip_tags( $instance['clientID'] ) );
-        $clientSecret   = trim( strip_tags( $instance['clientSecret'] ) );
-        $limit          = trim( strip_tags( $instance['limit'] ) );
-        $error          = false;
+		$title          = trim( strip_tags( $instance['title'] ) );
+		$username       = trim( strip_tags( $instance['username'] ) );
+		$clientID       = trim( strip_tags( $instance['clientID'] ) );
+		$clientSecret   = trim( strip_tags( $instance['clientSecret'] ) );
+		$limit          = trim( strip_tags( $instance['limit'] ) );
+		$error          = false;
 
 		echo $args['before_widget'];
 
@@ -144,11 +144,11 @@ class mb_untappd extends WP_Widget {
 		if ( false === $error ) {
 			$transient = apply_filters( 'untappd_checkins_filter', 'untappd_checkins' );
 			$trans_args = array(
-                'transient_name'        => $transient,
-                'untappd_user'          => $username,
-                'untappd_api_ID'        => $clientID,
-                'untappd_api_secret'    => $clientSecret,
-                'untappd_limit'         => $limit
+				'transient_name'        => $transient,
+				'untappd_user'          => $username,
+				'untappd_api_ID'        => $clientID,
+				'untappd_api_secret'    => $clientSecret,
+				'untappd_limit'         => $limit
 			);
 			$brews = $this->getTransient( $trans_args );
 
@@ -175,7 +175,7 @@ class mb_untappd extends WP_Widget {
 		echo $args['after_widget'];
 	}
 
-	public function brew_list( $brew_data ) {
+	public function brew_list( $brew_data = array() ) {
 		$brew_list_start = sprintf(
 			'<ul class="%s">',
 			$brew_data['classes']
