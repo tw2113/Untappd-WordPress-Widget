@@ -27,20 +27,22 @@ Text Domain: mb_untappd
 
 */
 
-add_action( 'widgets_init', 'mb_register_widgets' );
+
 /**
  * register widgets
  */
-function mb_register_widgets() {
+function mb_untappd_register_widgets() {
 	register_widget( 'mb_untappd' );
 }
-add_action( 'plugins_loaded', 'mb_untappd_init' );
+add_action( 'widgets_init', 'mb_untappd_register_widgets' );
+
 /**
  * Register and load our textdomain
  */
-function mb_untappd_init() {
+function mb_untappd_widget_init() {
   load_plugin_textdomain( 'mb_untappd', false, dirname( plugin_basename( __FILE__ ) . '/languages/' ) );
 }
+add_action( 'plugins_loaded', 'mb_untappd_widget_init' );
 
 /**
  * Extend our class and create our new widget
