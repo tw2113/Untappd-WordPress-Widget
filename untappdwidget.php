@@ -255,7 +255,7 @@ class mb_untappd extends WP_Widget {
 
 			//Save only if we get a good response back.
 			if ( '200' == $brew->meta->code ) {
-				set_transient( $transient, $brew, $duration );
+				set_transient( $trans_args['transient_name'], $brew, $duration );
 			}
 		}
 		return $brew;
