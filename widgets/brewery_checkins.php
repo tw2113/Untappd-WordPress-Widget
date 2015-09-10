@@ -138,7 +138,7 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 		Lets grab and display some data!
 		 */
 		if ( false === $error ) {
-			$transient  = apply_filters( 'untappd_checkins_filter', 'untappd_checkins' );
+			$transient  = apply_filters( 'untappd_checkins_brewery_filter', 'untappd_brewery_checkins' );
 			$trans_args = array(
 				'transient_name'     => $transient,
 				'untappd_brewery'    => $brewery,
