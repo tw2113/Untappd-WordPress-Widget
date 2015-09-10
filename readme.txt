@@ -42,7 +42,9 @@ Allows you to provide your own markup for the widget.
 
 == Frequently Asked Questions ==
 
-None yet
+= How Do I find the Brewery ID? =
+
+You should be able to find the Brewery ID by checking the URL for the brewery on a specific checkin. Hover over or copy the URL for the BREWERY in a checkin like in the following example: "PERSON is drinking a BEER by BREWERY at VENUE" and look for a numeral ID at the end of the URL
 
 == Screenshots ==
 
