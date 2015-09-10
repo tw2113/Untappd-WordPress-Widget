@@ -50,6 +50,10 @@ None
 
 == Changelog ==
 
+= 1.2.0 =
+* Added widget for listing Brewery checkins.
+* Fixed transient name issue for user checkins.
+
 = 1.1.2 =
 * Change from http to https for Untappd API request
 
@@ -72,6 +76,10 @@ None
 * Initial upload
 
 == Upgrade Notice ==
+
+= 1.2.0 =
+* Added widget for listing Brewery checkins.
+* Fixed transient name issue for user checkins.
 
 = 1.1.2 =
 * Change from http to https for Untappd API request
