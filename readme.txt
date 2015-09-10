@@ -3,7 +3,7 @@ Contributors: tw2113
 Tags: untappd, widgets, beer, social drinking
 Requires at least: 3.5
 Tested up to: 3.9.1
-Stable tag: 1.1.2
+Stable tag: 1.2.0
 License: WTFPL
 License URI: http://www.wtfpl.net/
 
