@@ -3,7 +3,7 @@
 Plugin Name: Untappd WordPress Widgets
 Plugin URI: http://michaelbox.net/
 Description: Displays recent Untappd checkins for a provided user.
-Version: 1.1.3
+Version: 1.2.0
 Author: Michael Beckwith
 Author URI: http://michaelbox.net
 License: WTFPL
