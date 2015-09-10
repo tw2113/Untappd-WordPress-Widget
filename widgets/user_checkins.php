@@ -148,7 +148,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 				echo $brews->get_error_message();
 			} else {
 				if ( ! in_array( $brews->meta->code, array( '500', '404' ) ) ) {
-					$classes = implode( ', ', apply_filters( 'untappd_checkins_list_classes', array( 'untappd_checkins' ) ) );
+					$classes = implode( ', ', apply_filters( 'untappd_checkins_list_classes', array( 'untappd_checkins' ), 'user' ) );
 
 					$brew_data   = array(
 						'brew_list' => $brews->response->checkins->items,
