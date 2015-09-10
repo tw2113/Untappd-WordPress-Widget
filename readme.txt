@@ -60,6 +60,7 @@ None
 = 1.2.0 =
 * Added widget for listing Brewery checkins.
 * Fixed transient name issue for user checkins.
+* Added parameter to untappd_checkins_list_classes filter to indicate which widget is being rendered at that moment.
 
 = 1.1.2 =
 * Change from http to https for Untappd API request
@@ -87,6 +88,7 @@ None
 = 1.2.0 =
 * Added widget for listing Brewery checkins.
 * Fixed transient name issue for user checkins.
+* Added parameter to untappd_checkins_list_classes filter to indicate which widget is being rendered at that moment.
 
 = 1.1.2 =
 * Change from http to https for Untappd API request
