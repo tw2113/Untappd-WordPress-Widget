@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Untappd User Stream widget
+Plugin Name: Untappd WordPress Widgets
 Plugin URI: http://michaelbox.net/
 Description: Displays recent Untappd checkins for a provided user.
 Version: 1.1.3
