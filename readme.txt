@@ -23,6 +23,9 @@ Two filters available at the moment:
 ### untappd_checkins_filter
 name of the transient to use for the response caching.
 	Default: untappd_checkins
+### untappd_checkins_brewery_filter
+name of the transient to use for the brewery response caching.
+	Default: untappd_brewery_checkins
 ### untappd_transient_duration
 how long to store the transients, in seconds
 	Default: 60*10 (10 minutes)
@@ -30,7 +33,9 @@ how long to store the transients, in seconds
 Classes applied to the `ul` tag
 	Default: untappd_checkins
 ### untappd_user_markup
-Allows you to provide your own markup for the widget.
+Allows you to provide your own markup for the user widget.
+### untappd_brewery_markup
+Allows you to provide your own markup for the brewery widget.
 
 == Installation ==
 
