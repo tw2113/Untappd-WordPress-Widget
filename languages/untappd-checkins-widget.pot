@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Untappd User Stream widget\n"
-"POT-Creation-Date: 2016-10-04 00:31-0500\n"
+"POT-Creation-Date: 2016-10-04 00:37-0500\n"
 "PO-Revision-Date: 2015-03-08 23:41-0600\n"
 "Last-Translator: Michael Beckwith <michael.d.beckwith@gmail.com>\n"
 "Language-Team: Michael Beckwith <michael.d.beckwith@gmail.com>\n"
@@ -55,42 +55,42 @@ msgstr ""
 msgid "Listing limit (default: 25, max: 50):"
 msgstr ""
 
-#: widgets/brewery_checkins.php:149
+#: widgets/brewery_checkins.php:147
 msgid "Please provide a brewery ID"
 msgstr ""
 
-#: widgets/brewery_checkins.php:155 widgets/user_checkins.php:149
+#: widgets/brewery_checkins.php:153 widgets/user_checkins.php:149
 msgid "Please provide a client ID provided by Untappd"
 msgstr ""
 
-#: widgets/brewery_checkins.php:161 widgets/user_checkins.php:155
+#: widgets/brewery_checkins.php:159 widgets/user_checkins.php:155
 msgid "Please provide a client Secret provided by Untappd"
 msgstr ""
 
-#: widgets/brewery_checkins.php:194 widgets/user_checkins.php:186
+#: widgets/brewery_checkins.php:190 widgets/user_checkins.php:186
 msgid "Nothing to display yet"
 msgstr ""
 
-#: widgets/brewery_checkins.php:218
+#: widgets/brewery_checkins.php:216
 #, php-format
 msgid "%s had a %s %s on %s %s"
 msgstr ""
 
-#: widgets/brewery_checkins.php:223 widgets/user_checkins.php:213
+#: widgets/brewery_checkins.php:221 widgets/user_checkins.php:213
 #, php-format
 msgid "%sDetails%s"
 msgstr ""
 
-#: widgets/brewery_checkins.php:224 widgets/user_checkins.php:214
+#: widgets/brewery_checkins.php:222 widgets/user_checkins.php:214
 msgid "View checkin details on Untappd's website"
 msgstr ""
 
-#: widgets/brewery_checkins.php:245
+#: widgets/brewery_checkins.php:243
 #, php-format
 msgid "by %s"
 msgstr ""
 
-#: widgets/brewery_checkins.php:249
+#: widgets/brewery_checkins.php:247
 #, php-format
 msgid "at %s"
 msgstr ""
