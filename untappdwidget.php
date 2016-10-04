@@ -29,7 +29,7 @@ Text Domain: mb_untappd
 
 
 /**
- * register widgets
+ * Register widgets.
  */
 function mb_untappd_register_widgets() {
 	register_widget( 'mb_untappd_user_checkins' );
@@ -38,7 +38,7 @@ function mb_untappd_register_widgets() {
 add_action( 'widgets_init', 'mb_untappd_register_widgets' );
 
 /**
- * Register and load our textdomain
+ * Register and load our textdomain.
  */
 function mb_untappd_widget_init() {
 	load_plugin_textdomain( 'mb_untappd', false, dirname( plugin_basename( __FILE__ ) . '/languages/' ) );

@@ -5,6 +5,9 @@
  */
 class mb_untappd_brewery_checkins extends WP_Widget {
 
+	/**
+	 * Constructor.
+	 */
 	function __construct() {
 		$widget_ops = array(
 			'classname'   => '',
@@ -13,6 +16,14 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 		parent::__construct( 'mb_untappd_brewery', __( 'Untappd Recent Brewery Checkins', 'mb_untappd' ), $widget_ops );
 	}
 
+	/**
+	 * Form method.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $instance Widget instance.
+	 * @return void
+	 */
 	function form( $instance = array() ) {
 		$defaults = array(
 			'title'        => __( 'Recent Brewery Untappd Checkins', 'mb_untappd' ),
@@ -84,6 +95,15 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 
 	}
 
+	/**
+	 * Update method.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $new_instance New widget instance.
+	 * @param array $old_instance Old widget instance.
+	 * @return array
+	 */
 	function update( $new_instance = array(), $old_instance = array() ) {
 		$instance                 = $old_instance;
 		$instance['title']        = trim( strip_tags( $new_instance['title'] ) );
@@ -95,6 +115,14 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 		return $instance;
 	}
 
+	/**
+	 * Widget display method.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $args     Widget args.
+	 * @param array $instance Widget instance.
+	 */
 	function widget( $args = array(), $instance = array() ) {
 
 		$title        = trim( strip_tags( $instance['title'] ) );
@@ -167,7 +195,6 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 				}
 			}
 		}
-		//
 		echo $args['after_widget'];
 	}
 
@@ -175,7 +202,6 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 	 * Render our unordered list for our brews.
 	 *
 	 * @param array $brew_data Array of data for a specific checkin.
-	 *
 	 * @return string $value Rendered list of brews.
 	 */
 	public function brew_list( $brew_data = array() ) {
@@ -206,6 +232,14 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 		return $brew_list_start . $brew_list_listing . $brew_list_end;
 	}
 
+	/**
+	 * Determine if a brewery or venue.
+	 *
+	 * @since unknown
+	 *
+	 * @param string|object $pint Checkin object.
+	 * @return string
+	 */
 	public function get_venue_or_brewery( $pint = '' ) {
 		if ( empty( $pint->venue ) ) {
 			return sprintf( __( 'by %s', 'mb_untappd' ),
@@ -220,8 +254,7 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 	/**
 	 * Retrieve our Untappd API data, from a transient first, if available
 	 *
-	 * @param  array $trans_args Array of transient name, username, Untappd API credentials, and listing limit
-	 *
+	 * @param array $trans_args Array of transient name, username, Untappd API credentials, and listing limit.
 	 * @return array                json-decoded data array from Untappd
 	 */
 	public function getTransient( $trans_args = array() ) {
@@ -230,7 +263,7 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 			$brew     = json_decode( wp_remote_retrieve_body( wp_remote_get( $url ) ) );
 			$duration = apply_filters( 'untappd_transient_duration', 60 * 10 );
 
-			//Save only if we get a good response back.
+			// Save only if we get a good response back.
 			if ( '200' == $brew->meta->code ) {
 				set_transient( $trans_args['transient_name'], $brew, $duration );
 			}
@@ -241,11 +274,11 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 
 	/**
 	 * Render a form input for use in our form input.
+	 *
 	 * @since 1.1.3
 	 *
 	 * @param array $args Array of argus to use with the markup.
-	 *
-	 * @return string $value Rendered html input.
+	 * @return void
 	 */
 	function form_input( $args = array() ) {
 		$label = esc_attr( $args['label'] );

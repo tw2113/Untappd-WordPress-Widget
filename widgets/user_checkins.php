@@ -1,10 +1,13 @@
 <?php
 
 /**
- * Extend our class and create our new widget
+ * Extend our class and create our new widget.
  */
 class mb_untappd_user_checkins extends WP_Widget {
 
+	/**
+	 * Constructor.
+	 */
 	function __construct() {
 		$widget_ops = array( 'classname'   => '',
 		                     'description' => __( 'Display recent user Untappd checkins', 'mb_untappd' )
@@ -12,6 +15,14 @@ class mb_untappd_user_checkins extends WP_Widget {
 		parent::__construct( 'mb_untappd_user', __( 'Untappd Recent User Checkins', 'mb_untappd' ), $widget_ops );
 	}
 
+	/**
+	 * Form method.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $instance Widget instance.
+	 * @return void
+	 */
 	function form( $instance = array() ) {
 		$defaults = array(
 			'title'        => __( 'My recent Untappd Checkins', 'mb_untappd' ),
@@ -80,6 +91,15 @@ class mb_untappd_user_checkins extends WP_Widget {
 
 	}
 
+	/**
+	 * Update method.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $new_instance New widget instance.
+	 * @param array $old_instance Old widget instance.
+	 * @return array
+	 */
 	function update( $new_instance = array(), $old_instance = array() ) {
 		$instance                 = $old_instance;
 		$instance['title']        = trim( strip_tags( $new_instance['title'] ) );
@@ -91,6 +111,14 @@ class mb_untappd_user_checkins extends WP_Widget {
 		return $instance;
 	}
 
+	/**
+	 * Widget display method.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $args     Widget arguments.
+	 * @param array $instance Widget instance.
+	 */
 	function widget( $args = array(), $instance = array() ) {
 
 		$title        = trim( strip_tags( $instance['title'] ) );
@@ -108,9 +136,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 
 		$limit = ( ! empty( $limit ) && is_numeric( $limit ) ) ? absint( $limit ) : '25';
 
-		/*
-		These three fields are required to get data out of Untappd.
-		 */
+		// These three fields are required to get data out of Untappd.
 		if ( empty( $username ) ) {
 			$error = true;
 			if ( current_user_can( 'manage_options' ) ) {
@@ -130,9 +156,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 			}
 		}
 
-		/*
-		Lets grab and display some data!
-		 */
+		// Lets grab and display some data!
 		if ( false === $error ) {
 			$transient  = apply_filters( 'untappd_checkins_filter', 'untappd_checkins' );
 			$trans_args = array(
@@ -163,7 +187,6 @@ class mb_untappd_user_checkins extends WP_Widget {
 				}
 			}
 		}
-		//
 		echo $args['after_widget'];
 	}
 
@@ -200,11 +223,10 @@ class mb_untappd_user_checkins extends WP_Widget {
 	}
 
 	/**
-	 * Retrieve our Untappd API data, from a transient first, if available
+	 * Retrieve our Untappd API data, from a transient first, if available.
 	 *
-	 * @param  array $trans_args Array of transient name, username, Untappd API credentials, and listing limit
-	 *
-	 * @return array                json-decoded data array from Untappd
+	 * @param array $trans_args Array of transient name, username, Untappd API credentials, and listing limit.
+	 * @return array JSON-decoded data array from Untappd
 	 */
 	public function getTransient( $trans_args = array() ) {
 		if ( false === ( $brew = get_transient( $trans_args['transient_name'] ) ) ) {
@@ -212,7 +234,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 			$brew     = json_decode( wp_remote_retrieve_body( wp_remote_get( $url ) ) );
 			$duration = apply_filters( 'untappd_transient_duration', 60 * 10 );
 
-			//Save only if we get a good response back.
+			// Save only if we get a good response back.
 			if ( '200' == $brew->meta->code ) {
 				set_transient( $trans_args['transient_name'], $brew, $duration );
 			}
@@ -223,11 +245,11 @@ class mb_untappd_user_checkins extends WP_Widget {
 
 	/**
 	 * Render a form input for use in our form input.
+	 *
 	 * @since 1.1.3
 	 *
 	 * @param array $args Array of argus to use with the markup.
-	 *
-	 * @return string $value Rendered html input.
+	 * @return void
 	 */
 	function form_input( $args = array() ) {
 		$label = esc_attr( $args['label'] );
