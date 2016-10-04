@@ -19,7 +19,7 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 	/**
 	 * Form method.
 	 *
-	 * @since 1.0.0
+	 * @since 1.2.0
 	 *
 	 * @param array $instance Widget instance.
 	 * @return void
@@ -98,7 +98,7 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 	/**
 	 * Update method.
 	 *
-	 * @since 1.0.0
+	 * @since 1.2.0
 	 *
 	 * @param array $new_instance New widget instance.
 	 * @param array $old_instance Old widget instance.
@@ -118,7 +118,7 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 	/**
 	 * Widget display method.
 	 *
-	 * @since 1.0.0
+	 * @since 1.2.0
 	 *
 	 * @param array $args     Widget args.
 	 * @param array $instance Widget instance.
@@ -140,9 +140,7 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 
 		$limit = ( ! empty( $limit ) && is_numeric( $limit ) ) ? absint( $limit ) : '25';
 
-		/*
-		These three fields are required to get data out of Untappd.
-		 */
+		// These three fields are required to get data out of Untappd.
 		if ( empty( $brewery ) ) {
 			$error = true;
 			if ( current_user_can( 'manage_options' ) ) {
@@ -162,9 +160,7 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 			}
 		}
 
-		/*
-		Lets grab and display some data!
-		 */
+		// Lets grab and display some data!
 		if ( false === $error ) {
 			$transient  = apply_filters( 'untappd_checkins_brewery_filter', 'untappd_brewery_checkins' );
 			$trans_args = array(
@@ -201,6 +197,8 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 	/**
 	 * Render our unordered list for our brews.
 	 *
+	 * @since 1.2.0
+	 *
 	 * @param array $brew_data Array of data for a specific checkin.
 	 * @return string $value Rendered list of brews.
 	 */
@@ -235,7 +233,7 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 	/**
 	 * Determine if a brewery or venue.
 	 *
-	 * @since unknown
+	 * @since 1.2.0
 	 *
 	 * @param string|object $pint Checkin object.
 	 * @return string
@@ -253,6 +251,8 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 
 	/**
 	 * Retrieve our Untappd API data, from a transient first, if available
+	 *
+	 * @since 1.2.0
 	 *
 	 * @param array $trans_args Array of transient name, username, Untappd API credentials, and listing limit.
 	 * @return array                json-decoded data array from Untappd
@@ -275,7 +275,7 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 	/**
 	 * Render a form input for use in our form input.
 	 *
-	 * @since 1.1.3
+	 * @since 1.2.0
 	 *
 	 * @param array $args Array of argus to use with the markup.
 	 * @return void
