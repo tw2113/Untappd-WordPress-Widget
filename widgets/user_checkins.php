@@ -183,7 +183,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 					echo ( '' !== $user_markup ) ? $user_markup : $this->brew_list( $brew_data );
 
 				} else {
-					echo '<p>' . __( 'Nothing to display yet', 'mb_untapped' ) . '</p>';
+					echo '<p>' . __( 'Nothing to display yet', 'mb_untappd' ) . '</p>';
 				}
 			}
 		}

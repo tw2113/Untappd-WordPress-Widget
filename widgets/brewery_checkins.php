@@ -187,7 +187,7 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 					echo ( '' !== $brewery_markup ) ? $brewery_markup : $this->brew_list( $brew_data );
 
 				} else {
-					echo '<p>' . __( 'Nothing to display yet', 'mb_untapped' ) . '</p>';
+					echo '<p>' . __( 'Nothing to display yet', 'mb_untappd' ) . '</p>';
 				}
 			}
 		}
