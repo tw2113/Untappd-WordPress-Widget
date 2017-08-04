@@ -1,4 +1,11 @@
 <?php
+/**
+ * Plugin loader.
+ *
+ * @package Untappd WordPress Widget
+ * @since 1.0.0
+ */
+
 /*
  * Plugin Name: Untappd WordPress Widgets
  * Plugin URI: http://michaelbox.net/
@@ -30,6 +37,8 @@
 
 /**
  * Register widgets.
+ *
+ * @since 1.0.0
  */
 function mb_untappd_register_widgets() {
 	register_widget( 'mb_untappd_user_checkins' );
