@@ -1,14 +1,14 @@
 <?php
 /*
-Plugin Name: Untappd WordPress Widgets
-Plugin URI: http://michaelbox.net/
-Description: Displays recent Untappd checkins for a provided user.
-Version: 1.2.0
-Author: Michael Beckwith
-Author URI: http://michaelbox.net
-License: WTFPL
-Text Domain: mb_untappd
-*/
+ * Plugin Name: Untappd WordPress Widgets
+ * Plugin URI: http://michaelbox.net/
+ * Description: Displays recent Untappd checkins for a provided user.
+ * Version: 1.2.0
+ * Author: Michael Beckwith
+ * Author URI: http://michaelbox.net
+ * License: WTFPL
+ * Text Domain: mb_untappd
+ */
 
 /*
 		DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
