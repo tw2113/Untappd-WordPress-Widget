@@ -291,7 +291,7 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 				)
 			);
 
-			$new_brewery = $api->get_brewery_checkins(
+			$new_brewery = $api->get_checkins(
 				array(
 					'limit'   => $trans_args['untappd_limit'],
 				)

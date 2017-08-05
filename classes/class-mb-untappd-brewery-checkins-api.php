@@ -25,7 +25,7 @@ class MB_Untappd_Brewery_Checkins_API extends MB_Untappd_API {
 	 * @param array $args Array of arguments.
 	 * @return array
 	 */
-	public function get_brewery_checkins( $args = array() ) {
+	public function get_checkins( $args = array() ) {
 		$defaults = array(
 			'limit'   => 25,
 		);
