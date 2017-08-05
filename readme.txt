@@ -60,8 +60,10 @@ None
 == Changelog ==
 
 = 1.3.0 =
-* Added widgets for Latest badge and Venue checkins.
-* Revised much of the underlaying code around API requests.
+* Added: widgets for Latest badge and Venue checkins.
+* Added: Settings page for Untappd API client credentials.
+* Updated: Conditionally show widget fields for API credentials if not saved on settings page.
+* Updated: Revised much of the underlaying code around API requests.
 
 = 1.2.0 =
 * Added widget for listing Brewery checkins.
