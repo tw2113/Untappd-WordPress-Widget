@@ -30,7 +30,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 			'username'     => '',
 			'clientID'     => '',
 			'clientSecret' => '',
-			'limit'        => ''
+			'limit'        => '',
 		);
 		$instance = wp_parse_args( (array) $instance, $defaults );
 
@@ -46,7 +46,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 				'name'  => $this->get_field_name( 'title' ),
 				'id'    => $this->get_field_id( 'title' ),
 				'type'  => 'text',
-				'value' => $title
+				'value' => $title,
 			)
 		);
 
@@ -56,7 +56,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 				'name'  => $this->get_field_name( 'username' ),
 				'id'    => $this->get_field_id( 'username' ),
 				'type'  => 'text',
-				'value' => $username
+				'value' => $username,
 			)
 		);
 
@@ -66,7 +66,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 				'name'  => $this->get_field_name( 'clientID' ),
 				'id'    => $this->get_field_id( 'clientID' ),
 				'type'  => 'text',
-				'value' => $clientID
+				'value' => $clientID,
 			)
 		);
 
@@ -76,7 +76,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 				'name'  => $this->get_field_name( 'clientSecret' ),
 				'id'    => $this->get_field_id( 'clientSecret' ),
 				'type'  => 'text',
-				'value' => $clientSecret
+				'value' => $clientSecret,
 			)
 		);
 
@@ -86,7 +86,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 				'name'  => $this->get_field_name( 'limit' ),
 				'id'    => $this->get_field_id( 'limit' ),
 				'type'  => 'text',
-				'value' => $limit
+				'value' => $limit,
 			)
 		);
 
@@ -165,7 +165,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 				'untappd_user'       => $username,
 				'untappd_api_ID'     => $clientID,
 				'untappd_api_secret' => $clientSecret,
-				'untappd_limit'      => $limit
+				'untappd_limit'      => $limit,
 			);
 			$brews      = $this->getTransient( $trans_args );
 
@@ -177,7 +177,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 
 					$brew_data   = array(
 						'brew_list' => $brews->response->checkins->items,
-						'classes'   => $classes
+						'classes'   => $classes,
 					);
 					$user_markup = apply_filters( 'untappd_user_markup', '', $brew_data );
 
