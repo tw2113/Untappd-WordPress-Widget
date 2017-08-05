@@ -173,6 +173,14 @@ class mb_untappd_user_checkins extends WP_Widget {
 				echo $brews->get_error_message();
 			} else {
 				if ( ! in_array( $brews->meta->code, array( '500', '404' ) ) ) {
+					/**
+					 * Filters the list of classes to apply to our widget output.
+					 *
+					 * @since 1.1.0
+					 *
+					 * @param array  $value Array of classes to use.
+					 * @param string $value Check-in type.
+					 */
 					$classes = implode( ', ', apply_filters( 'untappd_checkins_list_classes', array( 'untappd_checkins' ), 'user' ) );
 
 					$brew_data   = array(
@@ -233,6 +241,14 @@ class mb_untappd_user_checkins extends WP_Widget {
 		if ( false === ( $brew = get_transient( $trans_args['transient_name'] ) ) ) {
 			$url      = 'https://api.untappd.com/v4/user/checkins/' . $trans_args['untappd_user'] . '?client_id=' . $trans_args['untappd_api_ID'] . '&client_secret=' . $trans_args['untappd_api_secret'] . '&limit=' . $trans_args['untappd_limit'];
 			$brew     = json_decode( wp_remote_retrieve_body( wp_remote_get( $url ) ) );
+
+			/**
+			 * Filters the duration to store our transients.
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param int $value Time in seconds.
+			 */
 			$duration = apply_filters( 'untappd_transient_duration', 60 * 10 );
 
 			// Save only if we get a good response back.
