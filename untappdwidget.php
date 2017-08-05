@@ -68,6 +68,11 @@ function mb_untappd_widget_init() {
 }
 add_action( 'plugins_loaded', 'mb_untappd_widget_init' );
 
+/**
+ * Display a quick message about new settings page.
+ *
+ * @since 1.3.0
+ */
 function mb_untappd_settings_page_notification() {
 	printf(
 		'<p>%s</p>',
