@@ -7,7 +7,7 @@
  */
 
 /**
- * Class Formstack_API_V2
+ * Class MB_Untappd_API
  */
 class MB_Untappd_API {
 
