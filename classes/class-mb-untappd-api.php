@@ -19,8 +19,8 @@ class MB_Untappd_API {
 	protected $client_secret = '';
 
 	public function __construct( $args = array() ) {
-		$this->client_id     = isset( $args['client_id'] ) ? $args['client_id'] : '';
-		$this->client_secret = isset( $args['client_secret'] ) ? $args['client_secret'] : '';
-		$this->username      = isset( $args['username'] ) ? $args['username'] : '';
+		$this->client_id     = $args['client_id'];
+		$this->client_secret = $args['client_secret'];
+		$this->username      = $args['username'];
 	}
 }
