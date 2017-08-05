@@ -253,20 +253,14 @@ class mb_untappd_user_checkins extends WP_Widget {
 	 * @return void
 	 */
 	function form_input( $args = array() ) {
-		$label = esc_attr( $args['label'] );
-		$name  = esc_attr( $args['name'] );
-		$id    = esc_attr( $args['id'] );
-		$type  = esc_attr( $args['type'] );
-		$value = esc_attr( $args['value'] );
-
 		printf(
 			'<p><label for="%s">%s</label><input type="%s" class="widefat" name="%s" id="%s" value="%s" /></p>',
-			$id,
-			$label,
-			$type,
-			$name,
-			$id,
-			$value
+			esc_attr( $args['id'] ),
+			esc_attr( $args['label'] ),
+			esc_attr( $args['type'] ),
+			esc_attr( $args['name'] ),
+			esc_attr( $args['id'] ),
+			esc_attr( $args['value'] )
 		);
 	}
 }
