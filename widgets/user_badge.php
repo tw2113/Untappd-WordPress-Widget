@@ -13,7 +13,7 @@ class mb_untappd_user_badges extends WP_Widget {
 			'classname'   => '',
 			'description' => esc_html__( 'Display latest user Untappd badge', 'mb_untappd' ),
 		);
-		parent::__construct( 'mb_untappd_user', esc_html__( 'Untappd Latest User Badge', 'mb_untappd' ), $widget_ops );
+		parent::__construct( 'mb_untappd_user_badge', esc_html__( 'Untappd Latest User Badge', 'mb_untappd' ), $widget_ops );
 	}
 
 	/**
