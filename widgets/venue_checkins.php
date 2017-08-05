@@ -135,10 +135,16 @@ class mb_untappd_venue_checkins extends WP_Widget {
 	 */
 	function widget( $args = array(), $instance = array() ) {
 
+		$untappd_api = get_option( 'mb_untappd_settings', array() );
+
 		$title        = trim( strip_tags( $instance['title'] ) );
 		$venue        = trim( strip_tags( $instance['venue'] ) );
-		$clientID     = trim( strip_tags( $instance['clientID'] ) );
-		$clientSecret = trim( strip_tags( $instance['clientSecret'] ) );
+		$clientID     = ( ! empty( $untappd_api['client_id'] ) ) ?
+			trim( strip_tags( $untappd_api['client_id'] ) ) :
+			trim( strip_tags( $instance['clientID'] ) );
+		$clientSecret = ( ! empty( $untappd_api['client_secret'] ) ) ?
+			trim( strip_tags( $untappd_api['client_secret'] ) ) :
+			trim( strip_tags( $instance['clientSecret'] ) );
 		$limit        = trim( strip_tags( $instance['limit'] ) );
 		$error        = false;
 
