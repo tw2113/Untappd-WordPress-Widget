@@ -53,7 +53,11 @@ add_action( 'widgets_init', 'mb_untappd_register_widgets' );
 function mb_untappd_widget_init() {
 	load_plugin_textdomain( 'mb_untappd', false, dirname( plugin_basename( __FILE__ ) . '/languages/' ) );
 
-	require_once 'classes/class-untappd.php';
+	require_once 'classes/class-mb-untappd-api.php';
+	require_once 'classes/class-mb-untappd-badges-api.php';
+	require_once 'classes/class-mb-untappd-user-checkins-api.php';
+	require_once 'classes/class-mb-untappd-brewery-checkins-api.php';
+
 	require_once 'widgets/user_checkins.php';
 	require_once 'widgets/brewery_checkins.php';
 	require_once 'widgets/user_badge.php';
