@@ -162,6 +162,13 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 
 		// Lets grab and display some data!
 		if ( false === $error ) {
+			/**
+			 * Filters the transient name to use.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param string $value Transient name.
+			 */
 			$transient  = apply_filters( 'untappd_checkins_brewery_filter', 'untappd_brewery_checkins' );
 			$trans_args = array(
 				'transient_name'     => $transient,
@@ -176,12 +183,28 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 				echo $brews->get_error_message();
 			} else {
 				if ( ! in_array( $brews->meta->code, array( '500', '404' ) ) ) {
+					/**
+					 * Filters the list of classes to apply to our widget output.
+					 *
+					 * @since 1.1.0
+					 *
+					 * @param array  $value Array of classes to use.
+					 * @param string $value Check-in type.
+					 */
 					$classes = implode( ', ', apply_filters( 'untappd_checkins_list_classes', array( 'untappd_checkins' ), 'brewery' ) );
 
 					$brew_data   = array(
 						'brew_list' => $brews->response->checkins->items,
 						'classes'   => $classes,
 					);
+					/**
+					 * Filters the markup to use for the brewery widget.
+					 *
+					 * @since 1.2.0
+					 *
+					 * @param string $value     Markup to use. Default empty string.
+					 * @param array  $brew_data Array of brewery checkin data.
+					 */
 					$brewery_markup = apply_filters( 'untappd_brewery_markup', '', $brew_data );
 
 					echo ( '' !== $brewery_markup ) ? $brewery_markup : $this->brew_list( $brew_data );
@@ -261,6 +284,14 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 		if ( false === ( $brew = get_transient( $trans_args['transient_name'] ) ) ) {
 			$url      = 'https://api.untappd.com/v4/brewery/checkins/' . $trans_args['untappd_brewery'] . '?client_id=' . $trans_args['untappd_api_ID'] . '&client_secret=' . $trans_args['untappd_api_secret'] . '&limit=' . $trans_args['untappd_limit'];
 			$brew     = json_decode( wp_remote_retrieve_body( wp_remote_get( $url ) ) );
+
+			/**
+			 * Filters the duration to store our transients.
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param int $value Time in seconds.
+			 */
 			$duration = apply_filters( 'untappd_transient_duration', 60 * 10 );
 
 			// Save only if we get a good response back.
