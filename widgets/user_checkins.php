@@ -25,6 +25,14 @@ class mb_untappd_user_checkins extends WP_Widget {
 	 * @return void
 	 */
 	function form( $instance = array() ) {
+
+		$untappd_api = get_option( 'mb_untappd_settings', array() );
+
+		// Conditionally show our notification.
+		if ( empty( $untappd_api['client_id'] ) || empty( $untappd_api['client_secret'] ) ) {
+			mb_untappd_settings_page_notification();
+		}
+
 		$defaults = array(
 			'title'        => esc_html__( 'My recent Untappd Checkins', 'mb_untappd' ),
 			'username'     => '',
@@ -60,25 +68,27 @@ class mb_untappd_user_checkins extends WP_Widget {
 			)
 		);
 
-		$this->form_input(
-			array(
-				'label' => esc_html__( 'Client Key:', 'mb_untappd' ),
-				'name'  => $this->get_field_name( 'clientID' ),
-				'id'    => $this->get_field_id( 'clientID' ),
-				'type'  => 'text',
-				'value' => $clientID,
-			)
-		);
+		if ( empty( $untappd_api['client_id'] ) || empty( $untappd_api['client_secret'] ) ) {
+			$this->form_input(
+				array(
+					'label' => esc_html__( 'Client Key:', 'mb_untappd' ),
+					'name'  => $this->get_field_name( 'clientID' ),
+					'id'    => $this->get_field_id( 'clientID' ),
+					'type'  => 'text',
+					'value' => $clientID,
+				)
+			);
 
-		$this->form_input(
-			array(
-				'label' => esc_html__( 'Client Secret:', 'mb_untappd' ),
-				'name'  => $this->get_field_name( 'clientSecret' ),
-				'id'    => $this->get_field_id( 'clientSecret' ),
-				'type'  => 'text',
-				'value' => $clientSecret,
-			)
-		);
+			$this->form_input(
+				array(
+					'label' => esc_html__( 'Client Secret:', 'mb_untappd' ),
+					'name'  => $this->get_field_name( 'clientSecret' ),
+					'id'    => $this->get_field_id( 'clientSecret' ),
+					'type'  => 'text',
+					'value' => $clientSecret,
+				)
+			);
+		}
 
 		$this->form_input(
 			array(
