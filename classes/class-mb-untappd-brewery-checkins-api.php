@@ -17,10 +17,6 @@ class MB_Untappd_Brewery_Checkins_API extends MB_Untappd_API {
 	 */
 	protected $endpoint = 'brewery/checkins/';
 
-	public function __construct( array $args = array() ) {
-		parent::__construct( $args );
-	}
-
 	/**
 	 * Retrieve brewery checkins.
 	 *
