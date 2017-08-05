@@ -240,7 +240,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 	public function getTransient( $trans_args = array() ) {
 		$brew = get_transient( $trans_args['transient_name'] );
 		if ( false === $brew ) {
-			$api = new MB_Untappd_User_Checkins_API(
+			$user = new MB_Untappd_User_Checkins_API(
 				array(
 					'client_id'     => $trans_args['untappd_api_ID'],
 					'client_secret' => $trans_args['untappd_api_secret'],
@@ -248,7 +248,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 				)
 			);
 
-			$new_brew = $api->get_checkins(
+			$new_brew = $user->get_checkins(
 				array(
 					'limit'    => $trans_args['untappd_limit'],
 				)

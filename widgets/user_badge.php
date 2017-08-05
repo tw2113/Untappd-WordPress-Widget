@@ -237,7 +237,7 @@ class mb_untappd_user_badges extends WP_Widget {
 	public function getTransient( $trans_args = array() ) {
 		$badge = get_transient( $trans_args['transient_name'] );
 		if ( false === $badge ) {
-			$api = new MB_Untappd_Badges_API(
+			$user = new MB_Untappd_Badges_API(
 				array(
 					'client_id'     => $trans_args['untappd_api_ID'],
 					'client_secret' => $trans_args['untappd_api_secret'],
@@ -245,7 +245,7 @@ class mb_untappd_user_badges extends WP_Widget {
 				)
 			);
 
-			$new_badge = $api->get_user_badges();
+			$new_badge = $user->get_user_badges();
 
 			/**
 			 * Filters the duration to store our transients.
