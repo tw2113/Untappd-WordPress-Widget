@@ -17,10 +17,6 @@ class MB_Untappd_User_Checkins_API extends MB_Untappd_API {
 	 */
 	protected $endpoint = 'user/checkins/';
 
-	public function __construct( array $args = array() ) {
-		parent::__construct( $args );
-	}
-
 	/**
 	 * Retrieve user checkins.
 	 *
