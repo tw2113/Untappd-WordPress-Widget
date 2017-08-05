@@ -281,9 +281,18 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 	 * @return array                json-decoded data array from Untappd
 	 */
 	public function getTransient( $trans_args = array() ) {
-		if ( false === ( $brew = get_transient( $trans_args['transient_name'] ) ) ) {
-			$url      = 'https://api.untappd.com/v4/brewery/checkins/' . $trans_args['untappd_brewery'] . '?client_id=' . $trans_args['untappd_api_ID'] . '&client_secret=' . $trans_args['untappd_api_secret'] . '&limit=' . $trans_args['untappd_limit'];
-			$brew     = json_decode( wp_remote_retrieve_body( wp_remote_get( $url ) ) );
+		$brew = get_transient( $trans_args['transient_name'] );
+		if ( false === $brew ) {
+			$new_brew = wp_remote_get(
+				add_query_arg(
+					array(
+						'client_id'     => $trans_args['untappd_api_ID'],
+						'client_secret' => $trans_args['untappd_api_secret'],
+						'limit'         => $trans_args['untappd_limit'],
+					),
+					'https://api.untappd.com/v4/brewery/checkins/' . $trans_args['untappd_brewery']
+				)
+			);
 
 			/**
 			 * Filters the duration to store our transients.
@@ -295,7 +304,8 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 			$duration = apply_filters( 'untappd_transient_duration', 60 * 10 );
 
 			// Save only if we get a good response back.
-			if ( '200' == $brew->meta->code ) {
+			if ( 200 === wp_remote_retrieve_response_code( $new_brew ) ) {
+				$brew = json_decode( wp_remote_retrieve_body( $new_brew ) );
 				set_transient( $trans_args['transient_name'], $brew, $duration );
 			}
 		}
