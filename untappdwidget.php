@@ -67,3 +67,10 @@ function mb_untappd_widget_init() {
 	require_once 'widgets/user_badge.php';
 }
 add_action( 'plugins_loaded', 'mb_untappd_widget_init' );
+
+function mb_untappd_settings_page_notification() {
+	printf(
+		'<p>%s</p>',
+		esc_html__( 'Client API keys can now be set on our settings page.', 'mb_untappd' )
+	);
+}
