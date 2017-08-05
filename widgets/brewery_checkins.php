@@ -11,9 +11,9 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 	function __construct() {
 		$widget_ops = array(
 			'classname'   => '',
-			'description' => __( 'Display recent Brewery Untappd Checkins', 'mb_untappd' )
+			'description' => esc_html__( 'Display recent Brewery Untappd Checkins', 'mb_untappd' ),
 		);
-		parent::__construct( 'mb_untappd_brewery', __( 'Untappd Recent Brewery Checkins', 'mb_untappd' ), $widget_ops );
+		parent::__construct( 'mb_untappd_brewery', esc_html__( 'Untappd Recent Brewery Checkins', 'mb_untappd' ), $widget_ops );
 	}
 
 	/**
@@ -26,7 +26,7 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 	 */
 	function form( $instance = array() ) {
 		$defaults = array(
-			'title'        => __( 'Recent Brewery Untappd Checkins', 'mb_untappd' ),
+			'title'        => esc_html__( 'Recent Brewery Untappd Checkins', 'mb_untappd' ),
 			'brewery'     => '',
 			'clientID'     => '',
 			'clientSecret' => '',
@@ -42,7 +42,7 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 
 		$this->form_input(
 			array(
-				'label' => __( 'Title:', 'mb_untappd' ),
+				'label' => esc_html__( 'Title:', 'mb_untappd' ),
 				'name'  => $this->get_field_name( 'title' ),
 				'id'    => $this->get_field_id( 'title' ),
 				'type'  => 'text',
@@ -52,7 +52,7 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 
 		$this->form_input(
 			array(
-				'label' => __( 'Brewery Numeral ID:', 'mb_untappd' ),
+				'label' => esc_html__( 'Brewery Numeral ID:', 'mb_untappd' ),
 				'name'  => $this->get_field_name( 'brewery' ),
 				'id'    => $this->get_field_id( 'brewery' ),
 				'type'  => 'text',
@@ -60,12 +60,12 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 			)
 		);
 		echo '<a href="https://wordpress.org/plugins/untappd-checkins-widget/faq/">';
-		_e( 'Help finding brewery ID.', 'mb_untappd' );
+		esc_html_e( 'Help finding brewery ID', 'mb_untappd' );
 		echo '</a>';
 
 		$this->form_input(
 			array(
-				'label' => __( 'Client Key:', 'mb_untappd' ),
+				'label' => esc_html__( 'Client Key:', 'mb_untappd' ),
 				'name'  => $this->get_field_name( 'clientID' ),
 				'id'    => $this->get_field_id( 'clientID' ),
 				'type'  => 'text',
@@ -75,7 +75,7 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 
 		$this->form_input(
 			array(
-				'label' => __( 'Client Secret:', 'mb_untappd' ),
+				'label' => esc_html__( 'Client Secret:', 'mb_untappd' ),
 				'name'  => $this->get_field_name( 'clientSecret' ),
 				'id'    => $this->get_field_id( 'clientSecret' ),
 				'type'  => 'text',
@@ -85,7 +85,7 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 
 		$this->form_input(
 			array(
-				'label' => __( 'Listing limit (default: 25, max: 50):', 'mb_untappd' ),
+				'label' => esc_html__( 'Listing limit (default: 25, max: 50):', 'mb_untappd' ),
 				'name'  => $this->get_field_name( 'limit' ),
 				'id'    => $this->get_field_id( 'limit' ),
 				'type'  => 'text',
@@ -144,19 +144,19 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 		if ( empty( $brewery ) ) {
 			$error = true;
 			if ( current_user_can( 'manage_options' ) ) {
-				echo '<p>' . __( 'Please provide a brewery ID', 'mb_untappd' ) . '</p>';
+				echo '<p>' . esc_html__( 'Please provide a brewery ID', 'mb_untappd' ) . '</p>';
 			}
 		}
 		if ( empty( $clientID ) ) {
 			$error = true;
 			if ( current_user_can( 'manage_options' ) ) {
-				echo '<p>' . __( 'Please provide a client ID provided by Untappd', 'mb_untappd' ) . '</p>';
+				echo '<p>' . esc_html__( 'Please provide a client ID provided by Untappd', 'mb_untappd' ) . '</p>';
 			}
 		}
 		if ( empty( $clientSecret ) ) {
 			$error = true;
 			if ( current_user_can( 'manage_options' ) ) {
-				echo '<p>' . __( 'Please provide a client Secret provided by Untappd', 'mb_untappd' ) . '</p>';
+				echo '<p>' . esc_html__( 'Please provide a client Secret provided by Untappd', 'mb_untappd' ) . '</p>';
 			}
 		}
 
@@ -187,7 +187,7 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 					echo ( '' !== $brewery_markup ) ? $brewery_markup : $this->brew_list( $brew_data );
 
 				} else {
-					echo '<p>' . __( 'Nothing to display yet', 'mb_untappd' ) . '</p>';
+					echo '<p>' . esc_html__( 'Nothing to display yet', 'mb_untappd' ) . '</p>';
 				}
 			}
 		}
