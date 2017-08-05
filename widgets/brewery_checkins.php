@@ -85,7 +85,7 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 
 		$this->form_input(
 			array(
-				'label' => esc_html__( 'Listing limit (default: 25, max: 50):', 'mb_untappd' ),
+				'label' => esc_html__( 'Listing limit (default: 25, max: 25):', 'mb_untappd' ),
 				'name'  => $this->get_field_name( 'limit' ),
 				'id'    => $this->get_field_id( 'limit' ),
 				'type'  => 'text',
