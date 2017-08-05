@@ -9,10 +9,11 @@ class mb_untappd_user_checkins extends WP_Widget {
 	 * Constructor.
 	 */
 	function __construct() {
-		$widget_ops = array( 'classname'   => '',
-		                     'description' => __( 'Display recent user Untappd checkins', 'mb_untappd' )
+		$widget_ops = array(
+			'classname'   => '',
+			'description' => esc_html__( 'Display recent user Untappd checkins', 'mb_untappd' ),
 		);
-		parent::__construct( 'mb_untappd_user', __( 'Untappd Recent User Checkins', 'mb_untappd' ), $widget_ops );
+		parent::__construct( 'mb_untappd_user', esc_html__( 'Untappd Recent User Checkins', 'mb_untappd' ), $widget_ops );
 	}
 
 	/**
@@ -25,7 +26,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 	 */
 	function form( $instance = array() ) {
 		$defaults = array(
-			'title'        => __( 'My recent Untappd Checkins', 'mb_untappd' ),
+			'title'        => esc_html__( 'My recent Untappd Checkins', 'mb_untappd' ),
 			'username'     => '',
 			'clientID'     => '',
 			'clientSecret' => '',
@@ -41,7 +42,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 
 		$this->form_input(
 			array(
-				'label' => __( 'Title:', 'mb_untappd' ),
+				'label' => esc_html__( 'Title:', 'mb_untappd' ),
 				'name'  => $this->get_field_name( 'title' ),
 				'id'    => $this->get_field_id( 'title' ),
 				'type'  => 'text',
@@ -51,7 +52,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 
 		$this->form_input(
 			array(
-				'label' => __( 'Username:', 'mb_untappd' ),
+				'label' => esc_html__( 'Username:', 'mb_untappd' ),
 				'name'  => $this->get_field_name( 'username' ),
 				'id'    => $this->get_field_id( 'username' ),
 				'type'  => 'text',
@@ -61,7 +62,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 
 		$this->form_input(
 			array(
-				'label' => __( 'Client Key:', 'mb_untappd' ),
+				'label' => esc_html__( 'Client Key:', 'mb_untappd' ),
 				'name'  => $this->get_field_name( 'clientID' ),
 				'id'    => $this->get_field_id( 'clientID' ),
 				'type'  => 'text',
@@ -71,7 +72,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 
 		$this->form_input(
 			array(
-				'label' => __( 'Client Secret:', 'mb_untappd' ),
+				'label' => esc_html__( 'Client Secret:', 'mb_untappd' ),
 				'name'  => $this->get_field_name( 'clientSecret' ),
 				'id'    => $this->get_field_id( 'clientSecret' ),
 				'type'  => 'text',
@@ -81,7 +82,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 
 		$this->form_input(
 			array(
-				'label' => __( 'Listing limit (default: 25, max: 50):', 'mb_untappd' ),
+				'label' => esc_html__( 'Listing limit (default: 25, max: 50):', 'mb_untappd' ),
 				'name'  => $this->get_field_name( 'limit' ),
 				'id'    => $this->get_field_id( 'limit' ),
 				'type'  => 'text',
@@ -140,19 +141,19 @@ class mb_untappd_user_checkins extends WP_Widget {
 		if ( empty( $username ) ) {
 			$error = true;
 			if ( current_user_can( 'manage_options' ) ) {
-				echo '<p>' . __( 'Please provide a user ID', 'mb_untappd' ) . '</p>';
+				echo '<p>' . esc_html__( 'Please provide a user ID', 'mb_untappd' ) . '</p>';
 			}
 		}
 		if ( empty( $clientID ) ) {
 			$error = true;
 			if ( current_user_can( 'manage_options' ) ) {
-				echo '<p>' . __( 'Please provide a client ID provided by Untappd', 'mb_untappd' ) . '</p>';
+				echo '<p>' . esc_html__( 'Please provide a client ID provided by Untappd', 'mb_untappd' ) . '</p>';
 			}
 		}
 		if ( empty( $clientSecret ) ) {
 			$error = true;
 			if ( current_user_can( 'manage_options' ) ) {
-				echo '<p>' . __( 'Please provide a client Secret provided by Untappd', 'mb_untappd' ) . '</p>';
+				echo '<p>' . esc_html__( 'Please provide a client Secret provided by Untappd', 'mb_untappd' ) . '</p>';
 			}
 		}
 
@@ -183,7 +184,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 					echo ( '' !== $user_markup ) ? $user_markup : $this->brew_list( $brew_data );
 
 				} else {
-					echo '<p>' . __( 'Nothing to display yet', 'mb_untappd' ) . '</p>';
+					echo '<p>' . esc_html__( 'Nothing to display yet', 'mb_untappd' ) . '</p>';
 				}
 			}
 		}
