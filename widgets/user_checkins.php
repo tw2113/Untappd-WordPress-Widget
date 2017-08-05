@@ -195,7 +195,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 					echo '<p>' . esc_html__( 'Nothing to display yet', 'mb_untappd' ) . '</p>';
 				}
 			}
-		}
+		} // End if().
 		echo $args['after_widget'];
 	}
 
@@ -220,7 +220,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 				'<a href="https://untappd.com/brewery/' . $pint->brewery->brewery_id . '">' . $pint->brewery->brewery_name . '</a>',
 				date( get_option( 'date_format' ), strtotime( $pint->created_at ) ),
 				sprintf( __( '%sDetails%s', 'mb_untappd' ),
-					'<a href="https://untappd.com/user/' . $pint->user->user_name . '/checkin/' . $pint->checkin_id . '" title="' . esc_attr__( 'View checkin details on Untappd\'s website', 'mb_untappd' ) . '">',
+					'<a href="https://untappd.com/user/' . $pint->user->user_name . '/checkin/' . $pint->checkin_id . '" title="' . esc_attr__( "View checkin details on Untappd's website", 'mb_untappd' ) . '">',
 					'</a>'
 				)
 			);
