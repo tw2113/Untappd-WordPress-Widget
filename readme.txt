@@ -3,7 +3,7 @@ Contributors: tw2113
 Tags: untappd, widgets, beer, social drinking
 Requires at least: 3.5
 Tested up to: 4.8.1
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: WTFPL
 License URI: http://www.wtfpl.net/
 
@@ -47,15 +47,21 @@ Allows you to provide your own markup for the brewery widget.
 
 == Frequently Asked Questions ==
 
-= How Do I find the Brewery ID? =
+= How Do I find the Brewery or Venue ID? =
 
 You should be able to find the Brewery ID by checking the URL for the brewery on a specific checkin. Hover over or copy the URL for the BREWERY in a checkin like in the following example: "PERSON is drinking a BEER by BREWERY at VENUE" and look for a numeral ID at the end of the URL
+
+You should be able to do the same for a venue ID. Hover over the VENUE in the checkin URL and look for the numeral ID at the end.
 
 == Screenshots ==
 
 None
 
 == Changelog ==
+
+= 1.3.0 =
+* Added widgets for Latest badge and Venue checkins.
+* Revised much of the underlaying code around API requests.
 
 = 1.2.0 =
 * Added widget for listing Brewery checkins.
