@@ -248,7 +248,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 				)
 			);
 
-			$new_brew = $api->get_user_checkins(
+			$new_brew = $api->get_checkins(
 				array(
 					'limit'    => $trans_args['untappd_limit'],
 				)
