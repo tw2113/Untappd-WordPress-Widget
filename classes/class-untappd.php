@@ -82,4 +82,33 @@ class MB_Untappd_API {
 		);
 		return $results;
 	}
+
+	/**
+	 * Retrieve latest user badge.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param array $args Array of arguments.
+	 * @return array|WP_Error
+	 */
+	public function get_user_badges( $args = array() ) {
+		$defaults = array(
+			'username' => '',
+		);
+		$args = wp_parse_args( $args, $defaults );
+		$url = $this->base_uri . '/user/badges/' . $args['username'];
+
+		$results = wp_remote_get(
+			add_query_arg(
+				array(
+					'client_id'     => $this->client_id,
+					'client_secret' => $this->client_secret,
+					'limit'         => 1,
+				),
+				$url
+			)
+		);
+
+		return $results;
+	}
 }
