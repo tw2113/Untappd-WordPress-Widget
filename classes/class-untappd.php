@@ -41,6 +41,14 @@ class MB_Untappd_API {
 		$this->username      = isset( $args['username'] ) ? $args['username'] : '';
 	}
 
+	/**
+	 * Retrieve user checkins.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param array $args Array of arguments
+	 * @return array|WP_Error
+	 */
 	public function get_user_checkins( $args = array() ) {
 		$defaults = array(
 			'username' => '',
@@ -62,6 +70,14 @@ class MB_Untappd_API {
 		return $results;
 	}
 
+	/**
+	 * Retrieve brewery checkins.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param array $args Array of arguments.
+	 * @return array|WP_Error
+	 */
 	public function get_brewery_checkins( $args = array() ) {
 		$defaults = array(
 			'brewery' => '',
