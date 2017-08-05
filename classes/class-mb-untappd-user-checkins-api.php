@@ -1,6 +1,7 @@
 <?php
 /**
  * Class for fetching user checkins.
+ *
  * @package    Untappd WordPress Widget
  * @subpackage MB_Untappd_API
  * @since      1.3.0
@@ -8,6 +9,12 @@
 
 class MB_Untappd_User_Checkins_API extends MB_Untappd_API {
 
+	/**
+	 * Untappd API endpoint to query.
+	 *
+	 * @var string
+	 * @since 1.3.0
+	 */
 	protected $endpoint = 'user/checkins/';
 
 	public function __construct( array $args = array() ) {
@@ -20,7 +27,7 @@ class MB_Untappd_User_Checkins_API extends MB_Untappd_API {
 	 * @since 1.3.0
 	 *
 	 * @param array $args Array of arguments.
-	 * @return array|WP_Error
+	 * @return array
 	 */
 	public function get_user_checkins( $args = array() ) {
 		$defaults = array(
