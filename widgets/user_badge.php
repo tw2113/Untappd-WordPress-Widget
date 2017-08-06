@@ -169,7 +169,7 @@ class mb_untappd_user_badges extends WP_Widget {
 			if ( is_wp_error( $badge ) ) {
 				echo $badge->get_error_message();
 			} else {
-				if ( ! in_array( $badge->meta->code, array( '500', '404' ) ) ) {
+				if ( $badge && ! in_array( $badge->meta->code, array( '500', '404' ) ) ) {
 					/**
 					 * Filters the list of classes to apply to our widget output.
 					 * @since 1.1.0
@@ -274,6 +274,13 @@ class mb_untappd_user_badges extends WP_Widget {
 			if ( 200 === wp_remote_retrieve_response_code( $new_badge ) ) {
 				$badge = json_decode( wp_remote_retrieve_body( $new_badge ) );
 				set_transient( $trans_args['transient_name'], $badge, $duration );
+			} else {
+				if ( current_user_can( 'manage_options' ) ) {
+					printf(
+						esc_html__( 'Admin-only error: %s', 'mb_untappd' ),
+						$new_badge->get_error_message()
+					);
+				}
 			}
 		}
 

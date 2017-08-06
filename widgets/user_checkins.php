@@ -188,7 +188,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 			if ( is_wp_error( $brews ) ) {
 				echo $brews->get_error_message();
 			} else {
-				if ( ! in_array( $brews->meta->code, array( '500', '404' ) ) ) {
+				if ( $brews && ! in_array( $brews->meta->code, array( '500', '404' ) ) ) {
 					/**
 					 * Filters the list of classes to apply to our widget output.
 					 *
@@ -283,6 +283,13 @@ class mb_untappd_user_checkins extends WP_Widget {
 			if ( 200 === wp_remote_retrieve_response_code( $new_brew ) ) {
 				$brew = json_decode( wp_remote_retrieve_body( $new_brew ) );
 				set_transient( $trans_args['transient_name'], $brew, $duration );
+			} else {
+				if ( current_user_can( 'manage_options' ) ) {
+					printf(
+						esc_html__( 'Admin-only error: %s', 'mb_untappd' ),
+						$new_brew->get_error_message()
+					);
+				}
 			}
 		}
 
