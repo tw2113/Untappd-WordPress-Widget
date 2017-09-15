@@ -14,13 +14,13 @@ class MB_Untappd_Settings {
 		$client_secret = ( isset( $settings['client_secret'] ) ) ? $settings['client_secret'] : '';
 		add_settings_section(
 			'mb_untappd_settings',
-			esc_html__( 'Untappd WordPress Widgets API settings', 'formstack' ),
+			esc_html__( 'Untappd WordPress Widgets API settings', 'mb_untappd' ),
 			array( $this, 'mb_untappd_do_section' ),
 			'mb_untappd_do_options'
 		);
 		add_settings_field(
 			'untappd_client_id',
-			'<label for="untappd_client_id">' . esc_html__( 'Client Key', 'formstack' ) . '</label>',
+			'<label for="untappd_client_id">' . esc_html__( 'Client Key', 'mb_untappd' ) . '</label>',
 			array( $this, 'input_fields' ),
 			'mb_untappd_do_options',
 			'mb_untappd_settings',
@@ -34,7 +34,7 @@ class MB_Untappd_Settings {
 		);
 		add_settings_field(
 			'untappd_client_secret',
-			'<label for="untappd_client_secret">' . esc_html__( 'Client Secret', 'formstack' ) . '</label>',
+			'<label for="untappd_client_secret">' . esc_html__( 'Client Secret', 'mb_untappd' ) . '</label>',
 			array( $this, 'input_fields' ),
 			'mb_untappd_do_options',
 			'mb_untappd_settings',
