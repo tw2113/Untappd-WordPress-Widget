@@ -330,9 +330,15 @@ class mb_untappd_venue_checkins extends WP_Widget {
 				set_transient( $trans_args['transient_name'], $brew, $duration );
 			} else {
 				if ( current_user_can( 'manage_options' ) ) {
+					if ( is_array( $new_venue ) && isset( $new_venue['error'] ) ) {
+						$message = $new_venue['error'];
+					} else {
+						$message = $new_venue->get_error_message();
+					}
+
 					printf(
 						esc_html__( 'Admin-only error: %s', 'mb_untappd' ),
-						$new_venue->get_error_message()
+						$message
 					);
 				}
 			}

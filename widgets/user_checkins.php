@@ -287,9 +287,15 @@ class mb_untappd_user_checkins extends WP_Widget {
 				set_transient( $trans_args['transient_name'], $brew, $duration );
 			} else {
 				if ( current_user_can( 'manage_options' ) ) {
+					if ( is_array( $new_brew ) && isset( $new_brew['error'] ) ) {
+						$message = $new_brew['error'];
+					} else {
+						$message = $new_brew->get_error_message();
+					}
+
 					printf(
 						esc_html__( 'Admin-only error: %s', 'mb_untappd' ),
-						$new_brew->get_error_message()
+						$message
 					);
 				}
 			}

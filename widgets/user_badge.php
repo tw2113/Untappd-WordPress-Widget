@@ -278,9 +278,15 @@ class mb_untappd_user_badges extends WP_Widget {
 				set_transient( $trans_args['transient_name'], $badge, $duration );
 			} else {
 				if ( current_user_can( 'manage_options' ) ) {
+					if ( is_array( $new_badge ) && isset( $new_badge['error'] ) ) {
+						$message = $new_badge['error'];
+					} else {
+						$message = $new_badge->get_error_message();
+					}
+
 					printf(
 						esc_html__( 'Admin-only error: %s', 'mb_untappd' ),
-						$new_badge->get_error_message()
+						$message
 					);
 				}
 			}

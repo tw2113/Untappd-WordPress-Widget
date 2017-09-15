@@ -330,9 +330,15 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 				set_transient( $trans_args['transient_name'], $brew, $duration );
 			} else {
 				if ( current_user_can( 'manage_options' ) ) {
+					if ( is_array( $new_brewery ) && isset( $new_brewery['error'] ) ) {
+						$message = $new_brewery['error'];
+					} else {
+						$message = $new_brewery->get_error_message();
+					}
+
 					printf(
 						esc_html__( 'Admin-only error: %s', 'mb_untappd' ),
-						$new_brewery->get_error_message()
+						$message
 					);
 				}
 			}

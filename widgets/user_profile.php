@@ -418,10 +418,15 @@ class mb_untappd_user_profile extends WP_Widget {
 				set_transient( $trans_args['transient_name'], $profile, $duration );
 			} else {
 				if ( current_user_can( 'manage_options' ) ) {
+					if ( is_array( $new_profile ) && isset( $new_profile['error'] ) ) {
+						$message = $new_profile['error'];
+					} else {
+						$message = $new_profile->get_error_message();
+					}
+
 					printf(
-						// translators: placeholder will hold error message that only shows for admins.
 						esc_html__( 'Admin-only error: %s', 'mb_untappd' ),
-						$new_profile->get_error_message()
+						$message
 					);
 				}
 			}
