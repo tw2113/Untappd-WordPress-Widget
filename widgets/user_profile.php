@@ -302,8 +302,9 @@ class mb_untappd_user_profile extends WP_Widget {
 					), 'profile' ) );
 
 					$profile_data   = array(
-						'badge' => $profile->response->user,
-						'classes'   => $classes,
+						'badge'            => $profile->response->user,
+						'classes'          => $classes,
+						'conditional_data' => $conditional_data,
 					);
 					$profile_markup = apply_filters( 'untappd_user_markup', '', $profile_data );
 
