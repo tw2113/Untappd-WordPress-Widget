@@ -45,6 +45,7 @@ function mb_untappd_register_widgets() {
 	register_widget( 'mb_untappd_brewery_checkins' );
 	register_widget( 'mb_untappd_venue_checkins' );
 	register_widget( 'mb_untappd_user_badges' );
+	register_widget( 'mb_untappd_user_profile' );
 }
 add_action( 'widgets_init', 'mb_untappd_register_widgets' );
 
@@ -58,6 +59,7 @@ function mb_untappd_widget_init() {
 	require_once 'classes/class-mb-untappd-api.php';
 	require_once 'classes/class-mb-untappd-badges-api.php';
 	require_once 'classes/class-mb-untappd-user-checkins-api.php';
+	require_once 'classes/class-mb-untappd-user-profile-api.php';
 	require_once 'classes/class-mb-untappd-brewery-checkins-api.php';
 	require_once 'classes/class-mb-untappd-venue-checkins-api.php';
 
@@ -65,6 +67,7 @@ function mb_untappd_widget_init() {
 	require_once 'widgets/brewery_checkins.php';
 	require_once 'widgets/venue_checkins.php';
 	require_once 'widgets/user_badge.php';
+	require_once 'widgets/user_profile.php';
 }
 add_action( 'plugins_loaded', 'mb_untappd_widget_init' );
 
