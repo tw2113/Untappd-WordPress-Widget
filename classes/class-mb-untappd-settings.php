@@ -121,7 +121,7 @@ class MB_Untappd_Settings {
 	}
 
 	/**
-	 * Render the Formstack settings page
+	 * Render the Untappd Widgets settings page.
 	 */
 	public function plugin_options() {
 		include plugin_dir_path( dirname( __FILE__ ) ) . 'tmpl/options.php';
