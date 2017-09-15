@@ -447,4 +447,23 @@ class mb_untappd_user_profile extends WP_Widget {
 			esc_attr( $args['value'] )
 		);
 	}
+
+	/**
+	 * Render a checkbox form input to use in our form method.
+	 * @since 1.3.0
+	 *
+	 * @param array $args Array of arguements to use with the markup.
+	 * @return void
+	 */
+	public function form_input_check( $args = array() ) {
+		printf(
+			'<input class="checkbox" name="%s" id="%s" type="checkbox" value="%s" %s><label for="%s">%s</label>',
+			esc_attr( $args['name'] ),
+			esc_attr( $args['id'] ),
+			esc_attr( $args['value'] ),
+			checked( $args['checked'], $args['default'], false ),
+			esc_attr( $args['id'] ),
+			esc_html( $args['label'] )
+		);
+	}
 }
