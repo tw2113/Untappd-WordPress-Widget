@@ -104,6 +104,8 @@ class mb_untappd_user_badges extends WP_Widget {
 		$instance['clientID']     = trim( strip_tags( $new_instance['clientID'] ) );
 		$instance['clientSecret'] = trim( strip_tags( $new_instance['clientSecret'] ) );
 
+		delete_transient( apply_filters( 'untappd_badge_filter', 'untappd_user_badge' ) );
+
 		return $instance;
 	}
 

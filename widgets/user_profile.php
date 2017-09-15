@@ -205,6 +205,8 @@ class mb_untappd_user_profile extends WP_Widget {
 		$instance['clientID']           = trim( strip_tags( $new_instance['clientID'] ) );
 		$instance['clientSecret']       = trim( strip_tags( $new_instance['clientSecret'] ) );
 
+		delete_transient( apply_filters( 'untappd_profile_filter', 'untappd_user_profile' ) );
+
 		return $instance;
 	}
 

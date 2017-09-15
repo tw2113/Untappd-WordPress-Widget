@@ -122,6 +122,8 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 		$instance['clientSecret'] = trim( strip_tags( $new_instance['clientSecret'] ) );
 		$instance['limit']        = trim( strip_tags( $new_instance['limit'] ) );
 
+		delete_transient( apply_filters( 'untappd_checkins_brewery_filter', 'untappd_brewery_checkins' ) );
+
 		return $instance;
 	}
 

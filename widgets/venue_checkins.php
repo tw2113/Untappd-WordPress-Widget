@@ -122,6 +122,8 @@ class mb_untappd_venue_checkins extends WP_Widget {
 		$instance['clientSecret'] = trim( strip_tags( $new_instance['clientSecret'] ) );
 		$instance['limit']        = trim( strip_tags( $new_instance['limit'] ) );
 
+		delete_transient( apply_filters( 'untappd_checkins_venue_filter', 'untappd_venue_checkins' ) );
+
 		return $instance;
 	}
 
