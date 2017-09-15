@@ -429,14 +429,14 @@ class mb_untappd_user_profile extends WP_Widget {
 	}
 
 	/**
-	 * Render a form input for use in our form input.
+	 * Render a form input for use in our form method.
 	 *
 	 * @since 1.1.3
 	 *
-	 * @param array $args Array of argus to use with the markup.
+	 * @param array $args Array of arguements to use with the markup.
 	 * @return void
 	 */
-	function form_input( $args = array() ) {
+	public function form_input( $args = array() ) {
 		printf(
 			'<p><label for="%s">%s</label><input type="%s" class="widefat" name="%s" id="%s" value="%s" /></p>',
 			esc_attr( $args['id'] ),
