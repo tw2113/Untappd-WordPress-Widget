@@ -331,29 +331,39 @@ class mb_untappd_user_profile extends WP_Widget {
 			$profile_data['classes']
 		);
 
-		$profile = '';
-		$user = $profile_data['badge']->user_name;
-		$firstname = $profile_data['badge']->first_name;
-		$pic = $profile_data['badge']->user_avatar_hd;
-		$location = $profile_data['badge']->location;
-		$permalink = $profile_data['badge']->untappd_url;
+		$profile      = '';
+		$location     = '';
+		$user         = $profile_data['badge']->user_name;
+		$firstname    = $profile_data['badge']->first_name;
+		$pic          = $profile_data['badge']->user_avatar_hd;
+		$permalink    = $profile_data['badge']->untappd_url;
 		$member_since = $profile_data['badge']->date_joined;
 
-		$profile = sprintf(
-			'<img class="untappd-user-pic" src="%s" alt="%s" /><p><a href="%s">%s - %s</a><br/>%s</p><ul>%s</ul>',
-			esc_attr( $pic ),
-			sprintf(
-				esc_attr__( 'User profile photo for %s', 'mb_untappd' ),
-				$firstname
-			),
+		if ( isset( $profile_data['conditional_data']['avatar'] ) && 'on' === $profile_data['conditional_data']['avatar'] ) {
+			$profile .= sprintf(
+				'<img class="untappd-user-pic" src="%s" alt="%s" />',
+				esc_attr( $pic ),
+				sprintf(
+				// Translators: placeholder will hold user name value from Untappd profile.
+					esc_attr__( 'User profile photo for %s', 'mb_untappd' ),
+					$firstname
+				)
+			);
+		}
+		if ( isset( $profile_data['conditional_data']['location'] ) && 'on' === $profile_data['conditional_data']['location'] ) {
+			$location = '- ' . $profile_data['badge']->location;
+		}
+		$profile .= sprintf(
+			'<p><a href="%s">%s %s</a><br/>%s</p><ul>%s</ul>',
 			esc_attr( $permalink ),
 			$user,
 			$location,
 			sprintf(
+				// translators: placeholder will hold WP setting-formatted date representing their Untappd membership start.
 				esc_html__( 'Member since: %s', 'mb_untappd' ),
 				date( get_option( 'date_format' ), strtotime( $member_since ) )
 			),
-			$this->get_stats_list( $profile_data['badge']->stats )
+			$this->get_stats_list( $profile_data['badge']->stats, $profile_data['conditional_data'] )
 		);
 
 		$profile_end = '</div>';
@@ -361,9 +371,12 @@ class mb_untappd_user_profile extends WP_Widget {
 		return $profile_start . $profile . $profile_end;
 	}
 
-	public function get_stats_list( $stats ) {
+	public function get_stats_list( $stats, $data_to_keep = array() ) {
 		$stats_list = '';
 		foreach ( $stats as $stat => $value ) {
+			if ( ! in_array( $stat, array_keys( $data_to_keep ) ) ) {
+				continue;
+			}
 			$stat_type = explode( 'total_', $stat );
 			$stats_list .= '<li>' . ucfirst( $stat_type[1] ) . ': ' . $value . '</li>';
 		}
@@ -404,6 +417,7 @@ class mb_untappd_user_profile extends WP_Widget {
 			} else {
 				if ( current_user_can( 'manage_options' ) ) {
 					printf(
+						// translators: placeholder will hold error message that only shows for admins.
 						esc_html__( 'Admin-only error: %s', 'mb_untappd' ),
 						$new_profile->get_error_message()
 					);
