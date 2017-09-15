@@ -296,7 +296,10 @@ class mb_untappd_user_profile extends WP_Widget {
 					 * @param array  $value Array of classes to use.
 					 * @param string $value Check-in type.
 					 */
-					$classes = implode( ', ', apply_filters( 'untappd_checkins_list_classes', array( 'untappd_profile' ), 'profile' ) );
+					$classes = implode( ', ', apply_filters( 'untappd_checkins_list_classes', array(
+						'untappd-profile',
+						'untappd-profile-' . $profile->response->user->user_name,
+					), 'profile' ) );
 
 					$profile_data   = array(
 						'badge' => $profile->response->user,
