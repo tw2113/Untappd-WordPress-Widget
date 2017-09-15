@@ -34,17 +34,29 @@ class mb_untappd_user_profile extends WP_Widget {
 		}
 
 		$defaults = array(
-			'title'        => esc_html__( 'My Untappd profile', 'mb_untappd' ),
-			'username'     => '',
-			'clientID'     => '',
-			'clientSecret' => '',
+			'title'              => esc_html__( 'My Untappd profile', 'mb_untappd' ),
+			'username'           => '',
+			'showavatar'         => '',
+			'showlocation'       => '',
+			'showtotal_badges'   => '',
+			'showtotal_checkins' => '',
+			'showtotal_beers'    => '',
+			'showtotal_friends'  => '',
+			'clientID'           => '',
+			'clientSecret'       => '',
 		);
 		$instance = wp_parse_args( (array) $instance, $defaults );
 
-		$title        = trim( strip_tags( $instance['title'] ) );
-		$username     = trim( strip_tags( $instance['username'] ) );
-		$clientID     = trim( strip_tags( $instance['clientID'] ) );
-		$clientSecret = trim( strip_tags( $instance['clientSecret'] ) );
+		$title              = trim( strip_tags( $instance['title'] ) );
+		$username           = trim( strip_tags( $instance['username'] ) );
+		$showavatar         = trim( strip_tags( $instance['showavatar'] ) );
+		$showlocation       = trim( strip_tags( $instance['showlocation'] ) );
+		$showtotal_badges   = trim( strip_tags( $instance['showtotal_badges'] ) );
+		$showtotal_checkins = trim( strip_tags( $instance['showtotal_checkins'] ) );
+		$showtotal_beers    = trim( strip_tags( $instance['showtotal_beers'] ) );
+		$showtotal_friends  = trim( strip_tags( $instance['showtotal_friends'] ) );
+		$clientID           = trim( strip_tags( $instance['clientID'] ) );
+		$clientSecret       = trim( strip_tags( $instance['clientSecret'] ) );
 
 		$this->form_input(
 			array(
@@ -65,7 +77,90 @@ class mb_untappd_user_profile extends WP_Widget {
 				'value' => $username,
 			)
 		);
+		?>
+		<h3>Options</h3>
+		<ul>
+		<li><?php
+		$this->form_input_check(
+			array(
+				'label'   => esc_html__( 'Show User Avatar', 'mb_untappd' ),
+				'name'    => $this->get_field_name( 'showavatar' ),
+				'id'      => $this->get_field_id( 'showavatar' ),
+				'value'   => 'on',
+				'checked' => $showavatar,
+				'default' => 'on',
+			)
+		);
+		?>
+		</li>
+		<li><?php
+			$this->form_input_check(
+				array(
+					'label'   => esc_html__( 'Show User Location', 'mb_untappd' ),
+					'name'    => $this->get_field_name( 'showlocation' ),
+					'id'      => $this->get_field_id( 'showlocation' ),
+					'value'   => 'on',
+					'checked' => $showlocation,
+					'default' => 'on',
+				)
+			);
+			?>
+		</li>
+		<li><?php
+			$this->form_input_check(
+				array(
+					'label'   => esc_html__( 'Show Total Checkins', 'mb_untappd' ),
+					'name'    => $this->get_field_name( 'showtotal_checkins' ),
+					'id'      => $this->get_field_id( 'showtotal_checkins' ),
+					'value'   => 'on',
+					'checked' => $showtotal_checkins,
+					'default' => 'on',
+				)
+			);
+			?>
+		</li>
+		<li><?php
+			$this->form_input_check(
+				array(
+					'label'   => esc_html__( 'Show Total Beers', 'mb_untappd' ),
+					'name'    => $this->get_field_name( 'showtotal_beers' ),
+					'id'      => $this->get_field_id( 'showtotal_beers' ),
+					'value'   => 'on',
+					'checked' => $showtotal_beers,
+					'default' => 'on',
+				)
+			);
+			?>
+		</li>
+		<li><?php
+			$this->form_input_check(
+				array(
+					'label'   => esc_html__( 'Show Total Badges', 'mb_untappd' ),
+					'name'    => $this->get_field_name( 'showtotal_badges' ),
+					'id'      => $this->get_field_id( 'showtotal_badges' ),
+					'value'   => 'on',
+					'checked' => $showtotal_badges,
+					'default' => 'on',
+				)
+			);
+			?>
+		</li>
+		<li><?php
+			$this->form_input_check(
+				array(
+					'label'   => esc_html__( 'Show Total Friends', 'mb_untappd' ),
+					'name'    => $this->get_field_name( 'showtotal_friends' ),
+					'id'      => $this->get_field_id( 'showtotal_friends' ),
+					'value'   => 'on',
+					'checked' => $showtotal_friends,
+					'default' => 'on',
+				)
+			);
+			?>
+		</li>
+		</ul>
 
+		<?php
 		if ( empty( $untappd_api['client_id'] ) || empty( $untappd_api['client_secret'] ) ) {
 			$this->form_input(
 				array(
@@ -98,11 +193,17 @@ class mb_untappd_user_profile extends WP_Widget {
 	 * @return array
 	 */
 	function update( $new_instance = array(), $old_instance = array() ) {
-		$instance                 = $old_instance;
-		$instance['title']        = trim( strip_tags( $new_instance['title'] ) );
-		$instance['username']     = trim( strip_tags( $new_instance['username'] ) );
-		$instance['clientID']     = trim( strip_tags( $new_instance['clientID'] ) );
-		$instance['clientSecret'] = trim( strip_tags( $new_instance['clientSecret'] ) );
+		$instance                       = $old_instance;
+		$instance['title']              = trim( strip_tags( $new_instance['title'] ) );
+		$instance['username']           = trim( strip_tags( $new_instance['username'] ) );
+		$instance['showavatar']         = trim( strip_tags( $new_instance['showavatar'] ) );
+		$instance['showlocation']       = trim( strip_tags( $new_instance['showlocation'] ) );
+		$instance['showtotal_badges']   = trim( strip_tags( $new_instance['showtotal_badges'] ) );
+		$instance['showtotal_checkins'] = trim( strip_tags( $new_instance['showtotal_checkins'] ) );
+		$instance['showtotal_beers']    = trim( strip_tags( $new_instance['showtotal_beers'] ) );
+		$instance['showtotal_friends']  = trim( strip_tags( $new_instance['showtotal_friends'] ) );
+		$instance['clientID']           = trim( strip_tags( $new_instance['clientID'] ) );
+		$instance['clientSecret']       = trim( strip_tags( $new_instance['clientSecret'] ) );
 
 		return $instance;
 	}
@@ -119,8 +220,26 @@ class mb_untappd_user_profile extends WP_Widget {
 
 		$untappd_api = get_option( 'mb_untappd_settings', array() );
 
-		$title        = trim( strip_tags( $instance['title'] ) );
-		$username     = trim( strip_tags( $instance['username'] ) );
+		$title              = trim( strip_tags( $instance['title'] ) );
+		$username           = trim( strip_tags( $instance['username'] ) );
+		$showavatar         = trim( strip_tags( $instance['showavatar'] ) );
+		$showlocation       = trim( strip_tags( $instance['showlocation'] ) );
+		$showtotal_badges   = trim( strip_tags( $instance['showtotal_badges'] ) );
+		$showtotal_checkins = trim( strip_tags( $instance['showtotal_checkins'] ) );
+		$showtotal_beers    = trim( strip_tags( $instance['showtotal_beers'] ) );
+		$showtotal_friends  = trim( strip_tags( $instance['showtotal_friends'] ) );
+
+		$conditional_data = array_filter(
+			array(
+				'avatar'         => $showavatar,
+				'location'       => $showlocation,
+				'total_badges'   => $showtotal_badges,
+				'total_checkins' => $showtotal_checkins,
+				'total_beers'    => $showtotal_beers,
+				'total_friends'  => $showtotal_friends,
+			)
+		);
+
 		$clientID = ( ! empty( $untappd_api['client_id'] ) ) ?
 			trim( strip_tags( $untappd_api['client_id'] ) ) :
 			trim( strip_tags( $instance['clientID'] ) );
