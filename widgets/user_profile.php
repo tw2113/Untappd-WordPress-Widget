@@ -440,7 +440,7 @@ class mb_untappd_user_profile extends WP_Widget {
 		printf(
 			'<p><label for="%s">%s</label><input type="%s" class="widefat" name="%s" id="%s" value="%s" /></p>',
 			esc_attr( $args['id'] ),
-			esc_attr( $args['label'] ),
+			esc_html( $args['label'] ),
 			esc_attr( $args['type'] ),
 			esc_attr( $args['name'] ),
 			esc_attr( $args['id'] ),
