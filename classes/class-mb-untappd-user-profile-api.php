@@ -38,6 +38,11 @@ class MB_Untappd_User_Profile_API extends MB_Untappd_API {
 			)
 		);
 
+		$limit = $this->get_current_limit( $results );
+		if ( $limit >= '2' ) {
+			return $this->get_rate_limit_met_message();
+		}
+
 		return $results;
 	}
 }
