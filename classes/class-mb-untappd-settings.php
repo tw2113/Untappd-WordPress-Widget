@@ -55,10 +55,13 @@ class MB_Untappd_Settings {
 	public function mb_untappd_do_section() {
 		?>
 		<p>
-
-		</p>
-		<p>
-
+		<?php
+			printf(
+				// translators: placeholder will have link to Untappd API docs.
+				esc_html__( 'Information and API access application can be found at %s.', 'mb_untappd' ),
+				'<a href="https://untappd.com/api/dashboard">Untappd API Central</a>'
+			);
+			?>
 		</p>
 		<?php
 	}
