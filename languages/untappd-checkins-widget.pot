@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Untappd User Stream widget\n"
-"POT-Creation-Date: 2017-09-15 14:28-0500\n"
+"POT-Creation-Date: 2017-09-15 21:41-0500\n"
 "PO-Revision-Date: 2015-03-08 23:41-0600\n"
 "Last-Translator: Michael Beckwith <michael.d.beckwith@gmail.com>\n"
 "Language-Team: Michael Beckwith <michael.d.beckwith@gmail.com>\n"
@@ -19,32 +19,32 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: classes/class-mb-untappd-api.php:69
+#: classes/class-mb-untappd-api.php:73
 msgid "Reached rate limit for current hour."
 msgstr ""
 
-#: classes/class-mb-untappd-settings.php:17
+#: classes/class-mb-untappd-settings.php:38
 msgid "Untappd WordPress Widgets API settings"
 msgstr ""
 
-#: classes/class-mb-untappd-settings.php:23
+#: classes/class-mb-untappd-settings.php:44
 msgid "Client Key"
 msgstr ""
 
-#: classes/class-mb-untappd-settings.php:37
+#: classes/class-mb-untappd-settings.php:58
 msgid "Client Secret"
 msgstr ""
 
-#: classes/class-mb-untappd-settings.php:61
+#: classes/class-mb-untappd-settings.php:83
 #, php-format
 msgid "Information and API access application can be found at %s."
 msgstr ""
 
-#: classes/class-mb-untappd-settings.php:115
+#: classes/class-mb-untappd-settings.php:139
 msgid "Untappd Widgets API Settings"
 msgstr ""
 
-#: classes/class-mb-untappd-settings.php:116
+#: classes/class-mb-untappd-settings.php:140
 msgid "Untappd Widgets API"
 msgstr ""
 
