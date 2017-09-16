@@ -8,6 +8,8 @@
 
 /**
  * Class MB_Untappd_API
+ *
+ * @since 1.3.0
  */
 class MB_Untappd_API {
 
@@ -37,6 +39,8 @@ class MB_Untappd_API {
 
 	/**
 	 * MB_Untappd_API constructor.
+	 *
+	 * @since 1.3.0
 	 *
 	 * @param array $args
 	 */

@@ -7,6 +7,11 @@
  * @since      1.3.0
  */
 
+/**
+ * Class MB_Untappd_User_Profile_API
+ *
+ * @since 1.3.0
+ */
 class MB_Untappd_User_Profile_API extends MB_Untappd_API {
 
 	/**

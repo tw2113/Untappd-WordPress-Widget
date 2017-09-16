@@ -1,12 +1,33 @@
 <?php
+/**
+ * Class for setting up options page.
+ * @package    Untappd WordPress Widget
+ * @subpackage MB_Untappd_Settings
+ * @since      1.3.0
+ */
 
+/**
+ * Class MB_Untappd_Settings
+ *
+ * @since 1.3.0
+ */
 class MB_Untappd_Settings {
 
+	/**
+	 * Run our hooks.
+	 *
+	 * @since 1.3.0
+	 */
 	public function do_hooks() {
 		add_action( 'admin_init', array( $this, 'settings_registration' ) );
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 	}
 
+	/**
+	 * Register our settings.
+	 *
+	 * @since 1.3.0
+	 */
 	public function settings_registration() {
 		register_setting( 'mb_untappd', 'mb_untappd_settings', array( $this, 'settings_validate' ) );
 		$settings      = get_option( 'mb_untappd_settings', '' );
@@ -50,7 +71,8 @@ class MB_Untappd_Settings {
 
 	/**
 	 * Helper method for displaying our options page.
-	 * @since 1.0.11
+	 *
+	 * @since 1.3.0
 	 */
 	public function mb_untappd_do_section() {
 		?>
@@ -68,7 +90,8 @@ class MB_Untappd_Settings {
 
 	/**
 	 * Helper method to display inputs for settings page.
-	 * @since 1.0.11
+	 *
+	 * @since 1.3.0
 	 *
 	 * @param array $args Array of arguments for method.
 	 */
@@ -92,10 +115,10 @@ class MB_Untappd_Settings {
 
 	/**
 	 * Helper method for sanitization of our options.
-	 * @since 1.0.11
+	 *
+	 * @since 1.3.0
 	 *
 	 * @param string $input API key.
-	 *
 	 * @return string
 	 */
 	public function settings_validate( $input = '' ) {
@@ -108,7 +131,8 @@ class MB_Untappd_Settings {
 
 	/**
 	 * Set up our admin menu.
-	 * @since unknown
+	 *
+	 * @since 1.3.0
 	 */
 	public function admin_menu() {
 		add_options_page(
@@ -121,7 +145,9 @@ class MB_Untappd_Settings {
 	}
 
 	/**
-	 * Render the Untappd Widgets settings page.
+	 * Render the Untappd Widgets settings page via template file.
+	 *
+	 * @since 1.3.0
 	 */
 	public function plugin_options() {
 		include plugin_dir_path( dirname( __FILE__ ) ) . 'tmpl/options.php';
