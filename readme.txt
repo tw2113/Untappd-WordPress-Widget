@@ -77,6 +77,15 @@ None
 
 == Upgrade Notice ==
 
+= 1.3.1 =
+* Fixed: Mistakenly had the same filter name for multiple widget.
+
+= 1.3.0 =
+* Added: widgets for "Latest Badge", "Venue checkins", and user profile data.
+* Added: Settings page for Untappd API client credentials.
+* Updated: Conditionally show widget fields for API credentials if not saved on settings page.
+* Updated: Revised much of the underlaying code around API requests.
+
 = 1.2.0 =
 * Added widget for listing Brewery checkins.
 * Fixed transient name issue for user checkins.
