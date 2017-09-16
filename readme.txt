@@ -16,27 +16,7 @@ This plugin creates a widget that you can use to display recent checkins on Unta
 
 **NOTE** You will need to register for an api key from Untappd to use this widget. More information and application can be found at [Untappd API Docs](https://untappd.com/api/)
 
-Available settings will be User name, API client ID key, client ID secret key, and the limit of checkins to fetch.
-
-##Developer notes
-Two filters available at the moment:
-
-### untappd_checkins_filter
-name of the transient to use for the response caching.
-	Default: untappd_checkins
-### untappd_checkins_brewery_filter
-name of the transient to use for the brewery response caching.
-	Default: untappd_brewery_checkins
-### untappd_transient_duration
-how long to store the transients, in seconds
-	Default: 60*10 (10 minutes)
-### untappd_checkins_list_classes
-Classes applied to the `ul` tag
-	Default: untappd_checkins
-### untappd_user_markup
-Allows you to provide your own markup for the user widget.
-### untappd_brewery_markup
-Allows you to provide your own markup for the brewery widget.
+See full documentation at http://trexthepirate.com/untappd/
 
 == Installation ==
 
