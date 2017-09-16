@@ -1,12 +1,23 @@
 <?php
+/**
+ * Untappd User Badges Widget.
+ *
+ * @package Untappd
+ * @subpackage Widgets
+ * @since   1.3.0
+ */
 
 /**
  * Extend our class and create our new widget.
+ *
+ * @since 1.3.0
  */
 class mb_untappd_user_badges extends WP_Widget {
 
 	/**
 	 * Constructor.
+	 *
+	 * @since 1.3.0
 	 */
 	function __construct() {
 		$widget_ops = array(
@@ -19,7 +30,7 @@ class mb_untappd_user_badges extends WP_Widget {
 	/**
 	 * Form method.
 	 *
-	 * @since 1.0.0
+	 * @since 1.3.0
 	 *
 	 * @param array $instance Widget instance.
 	 * @return void
@@ -91,7 +102,8 @@ class mb_untappd_user_badges extends WP_Widget {
 
 	/**
 	 * Update method.
-	 * @since 1.0.0
+	 *
+	 * @since 1.3.0
 	 *
 	 * @param array $new_instance New widget instance.
 	 * @param array $old_instance Old widget instance.
@@ -112,7 +124,7 @@ class mb_untappd_user_badges extends WP_Widget {
 	/**
 	 * Widget display method.
 	 *
-	 * @since 1.0.0
+	 * @since 1.3.0
 	 *
 	 * @param array $args     Widget arguments.
 	 * @param array $instance Widget instance.
@@ -200,6 +212,8 @@ class mb_untappd_user_badges extends WP_Widget {
 	/**
 	 * Render our badge.
 	 *
+	 * @since 1.3.0
+	 *
 	 * @param array  $badge_data Array of data for a badge.
 	 * @param string $username   Untappd username.
 	 * @return string $value Rendered list of brews.
@@ -233,6 +247,15 @@ class mb_untappd_user_badges extends WP_Widget {
 		return $badge_start . $badge . $badge_end;
 	}
 
+	/**
+	 * Formats a user badge URL.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param object $badge_item
+	 * @param string $username
+	 * @return string
+	 */
 	public function get_user_badge_url( $badge_item, $username = '' ) {
 		return sprintf(
 			'https://untappd.com/user/%s/badges/%s',
@@ -241,12 +264,23 @@ class mb_untappd_user_badges extends WP_Widget {
 		);
 	}
 
+	/**
+	 * Returns a given user badge image URL.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param object $badge_item
+	 * @param string $size
+	 * @return mixed
+	 */
 	public function get_user_badge_image_url( $badge_item, $size = 'lg' ) {
 		return $badge_item->media->{"badge_image_$size"};
 	}
 
 	/**
 	 * Retrieve our Untappd API data, from a transient first, if available.
+	 *
+	 * @since 1.3.0
 	 *
 	 * @param array $trans_args Array of transient name, username, Untappd API credentials, and listing limit.
 	 * @return array JSON-decoded data array from Untappd
@@ -298,7 +332,7 @@ class mb_untappd_user_badges extends WP_Widget {
 	/**
 	 * Render a form input for use in our form input.
 	 *
-	 * @since 1.1.3
+	 * @since 1.3.0
 	 *
 	 * @param array $args Array of argus to use with the markup.
 	 * @return void

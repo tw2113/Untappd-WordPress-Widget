@@ -1,12 +1,23 @@
 <?php
+/**
+ * Untappd Brewery Checkins Widget.
+ *
+ * @package Untappd
+ * @subpackage Widgets
+ * @since 1.2.0
+ */
 
 /**
  * Extend our class and create our new widget
+ *
+ * @since 1.2.0
  */
 class mb_untappd_brewery_checkins extends WP_Widget {
 
 	/**
 	 * Constructor.
+	 *
+	 * @since 1.2.0
 	 */
 	function __construct() {
 		$widget_ops = array(

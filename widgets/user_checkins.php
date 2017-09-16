@@ -1,12 +1,23 @@
 <?php
+/**
+ * Untappd User Checkins Widget.
+ *
+ * @package Untappd
+ * @subpackage Widgets
+ * @since 1.0.0
+ */
 
 /**
  * Extend our class and create our new widget.
+ *
+ * @since 1.0.0
  */
 class mb_untappd_user_checkins extends WP_Widget {
 
 	/**
 	 * Constructor.
+	 *
+	 * @since 1.0.0
 	 */
 	function __construct() {
 		$widget_ops = array(
@@ -220,6 +231,8 @@ class mb_untappd_user_checkins extends WP_Widget {
 	/**
 	 * Render our unordered list for our brews.
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param array $brew_data Array of data for a specific checkin.
 	 * @return string $value Rendered list of brews.
 	 */
@@ -251,6 +264,8 @@ class mb_untappd_user_checkins extends WP_Widget {
 
 	/**
 	 * Retrieve our Untappd API data, from a transient first, if available.
+	 *
+	 * @since 1.0.0
 	 *
 	 * @param array $trans_args Array of transient name, username, Untappd API credentials, and listing limit.
 	 * @return array JSON-decoded data array from Untappd

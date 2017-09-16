@@ -1,12 +1,22 @@
 <?php
+/**
+ * Untappd Venue Checkins Widget.
+ * @package Untappd
+ * @subpackage Widgets
+ * @since 1.3.0
+ */
 
 /**
- * Extend our class and create our new widget
+ * Extend our class and create our new widget.
+ *
+ * @since 1.3.0
  */
 class mb_untappd_venue_checkins extends WP_Widget {
 
 	/**
 	 * Constructor.
+	 *
+	 * @since 1.3.0
 	 */
 	function __construct() {
 		$widget_ops = array(
@@ -19,7 +29,7 @@ class mb_untappd_venue_checkins extends WP_Widget {
 	/**
 	 * Form method.
 	 *
-	 * @since 1.2.0
+	 * @since 1.3.0
 	 *
 	 * @param array $instance Widget instance.
 	 * @return void
@@ -108,7 +118,7 @@ class mb_untappd_venue_checkins extends WP_Widget {
 	/**
 	 * Update method.
 	 *
-	 * @since 1.2.0
+	 * @since 1.3.0
 	 *
 	 * @param array $new_instance New widget instance.
 	 * @param array $old_instance Old widget instance.
@@ -130,7 +140,7 @@ class mb_untappd_venue_checkins extends WP_Widget {
 	/**
 	 * Widget display method.
 	 *
-	 * @since 1.2.0
+	 * @since 1.3.0
 	 *
 	 * @param array $args     Widget args.
 	 * @param array $instance Widget instance.
@@ -183,7 +193,7 @@ class mb_untappd_venue_checkins extends WP_Widget {
 			/**
 			 * Filters the transient name to use.
 			 *
-			 * @since 1.2.0
+			 * @since 1.3.0
 			 *
 			 * @param string $value Transient name.
 			 */
@@ -218,7 +228,7 @@ class mb_untappd_venue_checkins extends WP_Widget {
 					/**
 					 * Filters the markup to use for the brewery widget.
 					 *
-					 * @since 1.2.0
+					 * @since 1.3.0
 					 *
 					 * @param string $value     Markup to use. Default empty string.
 					 * @param array  $brew_data Array of brewery checkin data.
@@ -238,7 +248,7 @@ class mb_untappd_venue_checkins extends WP_Widget {
 	/**
 	 * Render our unordered list for our brews.
 	 *
-	 * @since 1.2.0
+	 * @since 1.3.0
 	 *
 	 * @param array $brew_data Array of data for a specific checkin.
 	 * @return string $value Rendered list of brews.
@@ -274,7 +284,7 @@ class mb_untappd_venue_checkins extends WP_Widget {
 	/**
 	 * Determine if a brewery or venue.
 	 *
-	 * @since 1.2.0
+	 * @since 1.3.0
 	 *
 	 * @param string|object $pint Checkin object.
 	 * @return string
@@ -293,7 +303,7 @@ class mb_untappd_venue_checkins extends WP_Widget {
 	/**
 	 * Retrieve our Untappd API data, from a transient first, if available
 	 *
-	 * @since 1.2.0
+	 * @since 1.3.0
 	 *
 	 * @param array $trans_args Array of transient name, username, Untappd API credentials, and listing limit.
 	 * @return array                json-decoded data array from Untappd
@@ -350,7 +360,7 @@ class mb_untappd_venue_checkins extends WP_Widget {
 	/**
 	 * Render a form input for use in our form input.
 	 *
-	 * @since 1.2.0
+	 * @since 1.3.0
 	 *
 	 * @param array $args Array of argus to use with the markup.
 	 * @return void
