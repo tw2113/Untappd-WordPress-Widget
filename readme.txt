@@ -3,7 +3,7 @@ Contributors: tw2113
 Tags: untappd, widgets, beer, social drinking
 Requires at least: 3.5
 Tested up to: 4.8.1
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 Requires PHP: 5.3
 License: WTFPL
 License URI: http://www.wtfpl.net/
@@ -59,6 +59,9 @@ You should be able to do the same for a venue ID. Hover over the VENUE in the ch
 None
 
 == Changelog ==
+
+= 1.3.1 =
+* Fixed: Mistakenly had the same filter name for multiple widget.
 
 = 1.3.0 =
 * Added: widgets for "Latest Badge", "Venue checkins", and user profile data.
