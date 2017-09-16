@@ -319,7 +319,7 @@ class mb_untappd_user_profile extends WP_Widget {
 						'classes'          => $classes,
 						'conditional_data' => $conditional_data,
 					);
-					$profile_markup = apply_filters( 'untappd_user_markup', '', $profile_data );
+					$profile_markup = apply_filters( 'untappd_user_profile_markup', '', $profile_data );
 
 					echo ( '' !== $profile_markup ) ? $profile_markup : $this->profile( $profile_data, $trans_args['untappd_user'] );
 

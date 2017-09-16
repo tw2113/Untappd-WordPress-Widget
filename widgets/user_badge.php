@@ -197,7 +197,7 @@ class mb_untappd_user_badges extends WP_Widget {
 						'badge' => $badge->response->items,
 						'classes'   => $classes,
 					);
-					$badge_markup = apply_filters( 'untappd_user_markup', '', $badge_data );
+					$badge_markup = apply_filters( 'untappd_user_badge_markup', '', $badge_data );
 
 					echo ( '' !== $badge_markup ) ? $badge_markup : $this->badge( $badge_data, $trans_args['untappd_user'] );
 
