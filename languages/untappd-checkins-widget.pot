@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Untappd User Stream widget\n"
-"POT-Creation-Date: 2017-09-15 21:41-0500\n"
+"POT-Creation-Date: 2017-09-15 22:02-0500\n"
 "PO-Revision-Date: 2015-03-08 23:41-0600\n"
 "Last-Translator: Michael Beckwith <michael.d.beckwith@gmail.com>\n"
 "Language-Team: Michael Beckwith <michael.d.beckwith@gmail.com>\n"
@@ -56,221 +56,221 @@ msgstr ""
 msgid "Client API keys can now be set on our settings page."
 msgstr ""
 
-#: widgets/brewery_checkins.php:14
+#: widgets/brewery_checkins.php:25
 msgid "Display recent Brewery Untappd Checkins"
 msgstr ""
 
-#: widgets/brewery_checkins.php:16
+#: widgets/brewery_checkins.php:27
 msgid "Untappd Recent Brewery Checkins"
 msgstr ""
 
-#: widgets/brewery_checkins.php:37
+#: widgets/brewery_checkins.php:48
 msgid "Recent Brewery Untappd Checkins"
 msgstr ""
 
-#: widgets/brewery_checkins.php:53 widgets/user_badge.php:51
-#: widgets/user_checkins.php:53 widgets/user_profile.php:63
-#: widgets/venue_checkins.php:53
+#: widgets/brewery_checkins.php:64 widgets/user_badge.php:62
+#: widgets/user_checkins.php:64 widgets/user_profile.php:73
+#: widgets/venue_checkins.php:63
 msgid "Title:"
 msgstr ""
 
-#: widgets/brewery_checkins.php:63
+#: widgets/brewery_checkins.php:74
 msgid "Brewery Numeral ID:"
 msgstr ""
 
-#: widgets/brewery_checkins.php:71
+#: widgets/brewery_checkins.php:82
 msgid "Help finding brewery ID"
 msgstr ""
 
-#: widgets/brewery_checkins.php:77 widgets/user_badge.php:72
-#: widgets/user_checkins.php:74 widgets/user_profile.php:167
-#: widgets/venue_checkins.php:77
+#: widgets/brewery_checkins.php:88 widgets/user_badge.php:83
+#: widgets/user_checkins.php:85 widgets/user_profile.php:177
+#: widgets/venue_checkins.php:87
 msgid "Client Key:"
 msgstr ""
 
-#: widgets/brewery_checkins.php:87 widgets/user_badge.php:82
-#: widgets/user_checkins.php:84 widgets/user_profile.php:177
-#: widgets/venue_checkins.php:87
+#: widgets/brewery_checkins.php:98 widgets/user_badge.php:93
+#: widgets/user_checkins.php:95 widgets/user_profile.php:187
+#: widgets/venue_checkins.php:97
 msgid "Client Secret:"
 msgstr ""
 
-#: widgets/brewery_checkins.php:98 widgets/venue_checkins.php:98
+#: widgets/brewery_checkins.php:109 widgets/venue_checkins.php:108
 msgid "Listing limit (default: 25, max: 25):"
 msgstr ""
 
-#: widgets/brewery_checkins.php:165
+#: widgets/brewery_checkins.php:176
 msgid "Please provide a brewery ID"
 msgstr ""
 
-#: widgets/brewery_checkins.php:171 widgets/user_badge.php:150
-#: widgets/user_checkins.php:168 widgets/user_profile.php:269
-#: widgets/venue_checkins.php:171
+#: widgets/brewery_checkins.php:182 widgets/user_badge.php:162
+#: widgets/user_checkins.php:179 widgets/user_profile.php:280
+#: widgets/venue_checkins.php:181
 msgid "Please provide a client ID provided by Untappd"
 msgstr ""
 
-#: widgets/brewery_checkins.php:177 widgets/user_badge.php:156
-#: widgets/user_checkins.php:174 widgets/user_profile.php:275
-#: widgets/venue_checkins.php:177
+#: widgets/brewery_checkins.php:188 widgets/user_badge.php:168
+#: widgets/user_checkins.php:185 widgets/user_profile.php:286
+#: widgets/venue_checkins.php:187
 msgid "Please provide a client Secret provided by Untappd"
 msgstr ""
 
-#: widgets/brewery_checkins.php:231 widgets/user_badge.php:193
-#: widgets/user_checkins.php:213 widgets/user_profile.php:316
-#: widgets/venue_checkins.php:231
+#: widgets/brewery_checkins.php:242 widgets/user_badge.php:205
+#: widgets/user_checkins.php:224 widgets/user_profile.php:327
+#: widgets/venue_checkins.php:241
 msgid "Nothing to display yet"
 msgstr ""
 
-#: widgets/brewery_checkins.php:257 widgets/venue_checkins.php:257
+#: widgets/brewery_checkins.php:268 widgets/venue_checkins.php:267
 #, php-format
 msgid "%s had a %s %s on %s %s"
 msgstr ""
 
-#: widgets/brewery_checkins.php:262 widgets/user_checkins.php:240
-#: widgets/venue_checkins.php:262
+#: widgets/brewery_checkins.php:273 widgets/user_checkins.php:253
+#: widgets/venue_checkins.php:272
 #, php-format
 msgid "%sDetails%s"
 msgstr ""
 
-#: widgets/brewery_checkins.php:263 widgets/user_checkins.php:241
-#: widgets/venue_checkins.php:263
+#: widgets/brewery_checkins.php:274 widgets/user_checkins.php:254
+#: widgets/venue_checkins.php:273
 msgid "View checkin details on Untappd's website"
 msgstr ""
 
-#: widgets/brewery_checkins.php:284 widgets/venue_checkins.php:284
+#: widgets/brewery_checkins.php:295 widgets/venue_checkins.php:294
 #, php-format
 msgid "by %s"
 msgstr ""
 
-#: widgets/brewery_checkins.php:288 widgets/venue_checkins.php:288
+#: widgets/brewery_checkins.php:299 widgets/venue_checkins.php:298
 #, php-format
 msgid "at %s"
 msgstr ""
 
-#: widgets/brewery_checkins.php:340 widgets/user_badge.php:288
-#: widgets/user_checkins.php:297 widgets/user_profile.php:428
-#: widgets/venue_checkins.php:340
+#: widgets/brewery_checkins.php:351 widgets/user_badge.php:322
+#: widgets/user_checkins.php:312 widgets/user_profile.php:453
+#: widgets/venue_checkins.php:350
 #, php-format
 msgid "Admin-only error: %s"
 msgstr ""
 
-#: widgets/user_badge.php:14
+#: widgets/user_badge.php:25
 msgid "Display latest user Untappd badge"
 msgstr ""
 
-#: widgets/user_badge.php:16
+#: widgets/user_badge.php:27
 msgid "Untappd Latest User Badge"
 msgstr ""
 
-#: widgets/user_badge.php:37
+#: widgets/user_badge.php:48
 msgid "My latest Untappd badge"
 msgstr ""
 
-#: widgets/user_badge.php:61 widgets/user_checkins.php:63
-#: widgets/user_profile.php:73
+#: widgets/user_badge.php:72 widgets/user_checkins.php:74
+#: widgets/user_profile.php:83
 msgid "Username:"
 msgstr ""
 
-#: widgets/user_badge.php:144 widgets/user_checkins.php:162
-#: widgets/user_profile.php:263
+#: widgets/user_badge.php:156 widgets/user_checkins.php:173
+#: widgets/user_profile.php:274
 msgid "Please provide a user ID"
 msgstr ""
 
-#: widgets/user_badge.php:222
+#: widgets/user_badge.php:236
 #, php-format
 msgid "Badge image for %s"
 msgstr ""
 
-#: widgets/user_badge.php:227
+#: widgets/user_badge.php:241
 msgid "View more"
 msgstr ""
 
-#: widgets/user_checkins.php:14
+#: widgets/user_checkins.php:25
 msgid "Display recent user Untappd checkins"
 msgstr ""
 
-#: widgets/user_checkins.php:16
+#: widgets/user_checkins.php:27
 msgid "Untappd Recent User Checkins"
 msgstr ""
 
-#: widgets/user_checkins.php:37
+#: widgets/user_checkins.php:48
 msgid "My recent Untappd Checkins"
 msgstr ""
 
-#: widgets/user_checkins.php:95
+#: widgets/user_checkins.php:106
 msgid "Listing limit (default: 25, max: 50):"
 msgstr ""
 
-#: widgets/user_checkins.php:236
+#: widgets/user_checkins.php:249
 #, php-format
 msgid "I had a %s by %s on %s %s"
 msgstr ""
 
-#: widgets/user_profile.php:14
+#: widgets/user_profile.php:24
 msgid "Display Untappd user profile"
 msgstr ""
 
-#: widgets/user_profile.php:16
+#: widgets/user_profile.php:26
 msgid "Untappd User Profile"
 msgstr ""
 
-#: widgets/user_profile.php:37
+#: widgets/user_profile.php:47
 msgid "My Untappd profile"
 msgstr ""
 
-#: widgets/user_profile.php:86
+#: widgets/user_profile.php:96
 msgid "Show User Avatar"
 msgstr ""
 
-#: widgets/user_profile.php:99
+#: widgets/user_profile.php:109
 msgid "Show User Location"
 msgstr ""
 
-#: widgets/user_profile.php:112
+#: widgets/user_profile.php:122
 msgid "Show Total Checkins"
 msgstr ""
 
-#: widgets/user_profile.php:125
+#: widgets/user_profile.php:135
 msgid "Show Total Beers"
 msgstr ""
 
-#: widgets/user_profile.php:138
+#: widgets/user_profile.php:148
 msgid "Show Total Badges"
 msgstr ""
 
-#: widgets/user_profile.php:151
+#: widgets/user_profile.php:161
 msgid "Show Total Friends"
 msgstr ""
 
-#: widgets/user_profile.php:350
+#: widgets/user_profile.php:363
 #, php-format
 msgid "User profile photo for %s"
 msgstr ""
 
-#: widgets/user_profile.php:365
+#: widgets/user_profile.php:378
 #, php-format
 msgid "Member since: %s"
 msgstr ""
 
-#: widgets/venue_checkins.php:14
+#: widgets/venue_checkins.php:24
 msgid "Display recent venue Untappd Checkins"
 msgstr ""
 
-#: widgets/venue_checkins.php:16
+#: widgets/venue_checkins.php:26
 msgid "Untappd Recent Venue Checkins"
 msgstr ""
 
-#: widgets/venue_checkins.php:37
+#: widgets/venue_checkins.php:47
 msgid "Recent Venue Untappd Checkins"
 msgstr ""
 
-#: widgets/venue_checkins.php:63
+#: widgets/venue_checkins.php:73
 msgid "Venue Numeral ID:"
 msgstr ""
 
-#: widgets/venue_checkins.php:71
+#: widgets/venue_checkins.php:81
 msgid "Help finding venue ID"
 msgstr ""
 
-#: widgets/venue_checkins.php:165
+#: widgets/venue_checkins.php:175
 msgid "Please provide a venue ID"
 msgstr ""
