@@ -130,7 +130,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 		$instance['clientSecret'] = trim( strip_tags( $new_instance['clientSecret'] ) );
 		$instance['limit']        = trim( strip_tags( $new_instance['limit'] ) );
 
-		delete_transient( apply_filters( 'untappd_checkins_filter', 'untappd_checkins' ) );
+		delete_transient( apply_filters( 'untappd_checkins_filter', 'untappd_checkins_' . $instance['username'] ) );
 
 		return $instance;
 	}
@@ -188,7 +188,7 @@ class mb_untappd_user_checkins extends WP_Widget {
 
 		// Lets grab and display some data!
 		if ( false === $error ) {
-			$transient  = apply_filters( 'untappd_checkins_filter', 'untappd_checkins' );
+			$transient  = apply_filters( 'untappd_checkins_filter', 'untappd_checkins_' . $username );
 			$trans_args = array(
 				'transient_name'     => $transient,
 				'untappd_user'       => $username,
