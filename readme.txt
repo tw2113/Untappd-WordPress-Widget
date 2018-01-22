@@ -40,6 +40,9 @@ None
 
 == Changelog ==
 
+= 1.3.2 - 2018-01-22 =
+* Updated: Changed default transient name values to include username/venue/brewery information. This allows for multiple instances of each widget type.
+
 = 1.3.1 =
 * Fixed: Mistakenly had the same filter name for multiple widget.
 
