@@ -68,6 +68,10 @@ function mb_untappd_widget_init() {
 	require_once 'widgets/venue_checkins.php';
 	require_once 'widgets/user_badge.php';
 	require_once 'widgets/user_profile.php';
+
+	require_once 'classes/class-gutenberg-block.php';
+	require_once 'classes/class-gutenberg.php';
+
 }
 add_action( 'plugins_loaded', 'mb_untappd_widget_init' );
 
