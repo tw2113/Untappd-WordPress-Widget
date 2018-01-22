@@ -216,7 +216,7 @@ class mb_untappd_user_profile extends WP_Widget {
 		$instance['clientID']           = trim( strip_tags( $new_instance['clientID'] ) );
 		$instance['clientSecret']       = trim( strip_tags( $new_instance['clientSecret'] ) );
 
-		delete_transient( apply_filters( 'untappd_profile_filter', 'untappd_user_profile' ) );
+		delete_transient( apply_filters( 'untappd_profile_filter', 'untappd_user_profile_' . $instance['username'] ) );
 
 		return $instance;
 	}
@@ -289,7 +289,7 @@ class mb_untappd_user_profile extends WP_Widget {
 
 		// Lets grab and display some data!
 		if ( false === $error ) {
-			$transient  = apply_filters( 'untappd_profile_filter', 'untappd_user_profile' );
+			$transient  = apply_filters( 'untappd_profile_filter', 'untappd_user_profile_' . $username );
 			$trans_args = array(
 				'transient_name'     => $transient,
 				'untappd_user'       => $username,
