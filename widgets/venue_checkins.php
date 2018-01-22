@@ -132,7 +132,7 @@ class mb_untappd_venue_checkins extends WP_Widget {
 		$instance['clientSecret'] = trim( strip_tags( $new_instance['clientSecret'] ) );
 		$instance['limit']        = trim( strip_tags( $new_instance['limit'] ) );
 
-		delete_transient( apply_filters( 'untappd_checkins_venue_filter', 'untappd_venue_checkins' ) );
+		delete_transient( apply_filters( 'untappd_checkins_venue_filter', 'untappd_venue_checkins_' . $instance['venue'] ) );
 
 		return $instance;
 	}
@@ -194,10 +194,11 @@ class mb_untappd_venue_checkins extends WP_Widget {
 			 * Filters the transient name to use.
 			 *
 			 * @since 1.3.0
+			 * @since 1.3.2 Moved filter to dynamic to allow multiple streams.
 			 *
 			 * @param string $value Transient name.
 			 */
-			$transient  = apply_filters( 'untappd_checkins_venue_filter', 'untappd_venue_checkins' );
+			$transient  = apply_filters( 'untappd_checkins_venue_filter', 'untappd_venue_checkins_' . $venue );
 			$trans_args = array(
 				'transient_name'     => $transient,
 				'untappd_venue'      => $venue,
