@@ -1,0 +1,46 @@
+{
+  "name": "untapped-wordpress-widget",
+  "version": "1.4.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+  },
+  "scripts": {
+    "build": "NODE_ENV=production gulp",
+    "dev": "gulp",
+    "watch": "gulp watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tw2113/Untappd-WordPress-Widget.git"
+  },
+  "author": "",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/tw2113/Untappd-WordPress-Widget/issues"
+  },
+  "homepage": "",
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "autoprefixer": "^9.7.4",
+    "babel-loader": "^8.0.6",
+    "browser-sync": "^2.26.7",
+    "css-mqpacker": "^7.0.0",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-util": "^3.0.8",
+    "gulp-wp-pot": "^2.3.6",
+    "webpack": "^4.41.6",
+    "webpack-stream": "^5.2.1",
+    "@babel/preset-react": "^7.9.4",
+    "@wordpress/components": "^9.2.6"
+  }
+}
