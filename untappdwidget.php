@@ -10,7 +10,7 @@
  * Plugin Name: Untappd WordPress Widgets
  * Plugin URI: http://michaelbox.net/
  * Description: Displays recent Untappd checkins for a provided user.
- * Version: 1.3.2
+ * Version: 1.4.0
  * Author: Michael Beckwith
  * Author URI: http://michaelbox.net
  * License: WTFPL
@@ -71,6 +71,9 @@ function mb_untappd_widget_init() {
 
 	require_once 'classes/class-gutenberg-block.php';
 	require_once 'classes/class-gutenberg.php';
+
+	$gutenberg = new Untappd_MB_Gutenberg();
+	$gutenberg->hooks();
 
 }
 add_action( 'plugins_loaded', 'mb_untappd_widget_init' );

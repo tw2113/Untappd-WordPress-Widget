@@ -1,9 +1,9 @@
 === Untappd WordPress Widget ===
 Contributors: tw2113
 Tags: untappd, widgets, beer, social drinking
-Requires at least: 3.5
-Tested up to: 4.9.2
-Stable tag: 1.3.2
+Requires at least: 5.0.0
+Tested up to: 5.4
+Stable tag: 1.4.0
 Requires PHP: 5.3
 License: WTFPL
 License URI: http://www.wtfpl.net/
