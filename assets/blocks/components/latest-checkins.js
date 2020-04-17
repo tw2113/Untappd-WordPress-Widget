@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 const { Component } = wp.element;
 const { TextControl } = wp.components;
 

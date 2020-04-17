@@ -1,3 +1,5 @@
+import attributes from './attributes';
+
 const { __ } = wp.i18n;
 const {
 	registerBlockType,
@@ -6,25 +8,25 @@ const {
 import LatestCheckins from '../components/latest-checkins';
 
 export default registerBlockType('untappd-mb-gutenberg/latest-checkins', {
-	title: __('Untappd Latest User Checkins', 'mb_untappd'),
+	title: __( 'Untappd Latest User Checkins', 'mb_untappd' ),
 	category: 'widgets',
 	keywords: [
 		__( 'Beer', 'mb_untappd' ),
 		__( 'Checkin', 'mb_untappd' )
 	],
-	attributes: {
-		username: {
-			type: 'string',
-		},
-		displayTotal: {
-			type: 'string'
-		}
+	attributes,
+	edit: props => {
+		const { setAttributes } = props;
+		return(
+			<LatestCheckins { ...{ setAttributes, ...props }} />
+		);
 	},
-	edit: LatestCheckins,
 	save: props => {
 		const { attributes } = props;
 		return (
-			{attributes.username}
+			<div>
+				attributes
+			</div>
 		)
 	}
 });
