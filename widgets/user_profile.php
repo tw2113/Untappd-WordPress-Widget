@@ -443,10 +443,13 @@ class mb_untappd_user_profile extends WP_Widget {
 				set_transient( $trans_args['transient_name'], $profile, $duration );
 			} else {
 				if ( current_user_can( 'manage_options' ) ) {
-					if ( is_array( $new_profile ) && isset( $new_profile['error'] ) ) {
+					if ( 404 === wp_remote_retrieve_response_code( $new_profile ) ) {
+						$response = json_decode( wp_remote_retrieve_body( $new_profile ) );
+						$message = $response->meta->error_detail;
+					} else if ( is_array( $new_profile ) && isset( $new_profile['error'] ) ) {
 						$message = $new_profile['error'];
 					} else {
-						$message = $new_profile->get_error_message();
+						$message = esc_html__( 'There was an error with the API Request. Please contact support', 'mb_untappd' );
 					}
 
 					printf(
