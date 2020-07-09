@@ -216,7 +216,7 @@ class mb_untappd_user_profile extends WP_Widget {
 		$instance['clientID']           = trim( strip_tags( $new_instance['clientID'] ) );
 		$instance['clientSecret']       = trim( strip_tags( $new_instance['clientSecret'] ) );
 
-		delete_transient( apply_filters( 'untappd_profile_filter', 'untappd_user_profile' ) );
+		delete_transient( apply_filters( 'untappd_profile_filter', 'untappd_user_profile_' . $instance['username'] ) );
 
 		return $instance;
 	}
@@ -289,7 +289,7 @@ class mb_untappd_user_profile extends WP_Widget {
 
 		// Lets grab and display some data!
 		if ( false === $error ) {
-			$transient  = apply_filters( 'untappd_profile_filter', 'untappd_user_profile' );
+			$transient  = apply_filters( 'untappd_profile_filter', 'untappd_user_profile_' . $username );
 			$trans_args = array(
 				'transient_name'     => $transient,
 				'untappd_user'       => $username,
@@ -443,10 +443,13 @@ class mb_untappd_user_profile extends WP_Widget {
 				set_transient( $trans_args['transient_name'], $profile, $duration );
 			} else {
 				if ( current_user_can( 'manage_options' ) ) {
-					if ( is_array( $new_profile ) && isset( $new_profile['error'] ) ) {
+					if ( 404 === wp_remote_retrieve_response_code( $new_profile ) ) {
+						$response = json_decode( wp_remote_retrieve_body( $new_profile ) );
+						$message = $response->meta->error_detail;
+					} else if ( is_array( $new_profile ) && isset( $new_profile['error'] ) ) {
 						$message = $new_profile['error'];
 					} else {
-						$message = $new_profile->get_error_message();
+						$message = esc_html__( 'There was an error with the API Request. Please contact support', 'mb_untappd' );
 					}
 
 					printf(

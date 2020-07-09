@@ -133,7 +133,7 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 		$instance['clientSecret'] = trim( strip_tags( $new_instance['clientSecret'] ) );
 		$instance['limit']        = trim( strip_tags( $new_instance['limit'] ) );
 
-		delete_transient( apply_filters( 'untappd_checkins_brewery_filter', 'untappd_brewery_checkins' ) );
+		delete_transient( apply_filters( 'untappd_checkins_brewery_filter', 'untappd_brewery_checkins_' . $instance['brewery'] ) );
 
 		return $instance;
 	}
@@ -195,10 +195,11 @@ class mb_untappd_brewery_checkins extends WP_Widget {
 			 * Filters the transient name to use.
 			 *
 			 * @since 1.2.0
+			 * @since 1.3.2 Moved filter to dynamic to allow multiple streams.
 			 *
 			 * @param string $value Transient name.
 			 */
-			$transient  = apply_filters( 'untappd_checkins_brewery_filter', 'untappd_brewery_checkins' );
+			$transient  = apply_filters( 'untappd_checkins_brewery_filter', 'untappd_brewery_checkins_' . $brewery );
 			$trans_args = array(
 				'transient_name'     => $transient,
 				'untappd_brewery'    => $brewery,
