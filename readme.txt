@@ -2,8 +2,8 @@
 Contributors: tw2113
 Tags: untappd, widgets, beer, social drinking
 Requires at least: 3.5
-Tested up to: 4.9.2
-Stable tag: 1.3.2
+Tested up to: 5.4.2
+Stable tag: 1.3.3
 Requires PHP: 5.3
 License: WTFPL
 License URI: http://www.wtfpl.net/
@@ -39,6 +39,9 @@ You should be able to do the same for a venue ID. Hover over the VENUE in the ch
 None
 
 == Changelog ==
+
+= 1.3.3 - 2020-07-08 =
+* Fixed: fatal error regarding failing API requests and error retrieving.
 
 = 1.3.2 - 2018-01-22 =
 * Updated: Changed default transient name values to include username/venue/brewery information. This allows for multiple instances of each widget type.
