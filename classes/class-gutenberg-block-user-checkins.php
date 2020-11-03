@@ -27,7 +27,7 @@ class Untappd_MB_Gutenberg_Block {
 
 
 	public function on_render_block( $attributes ) {
-		$attributes = $attributes;
+		$atts = $attributes;
 
 		return '';
 	}
