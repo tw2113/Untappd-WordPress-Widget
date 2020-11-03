@@ -69,11 +69,14 @@ function mb_untappd_widget_init() {
 	require_once 'widgets/user_badge.php';
 	require_once 'widgets/user_profile.php';
 
-	require_once 'classes/class-gutenberg-block.php';
+	require_once 'classes/class-gutenberg-block-user-checkins.php';
 	require_once 'classes/class-gutenberg.php';
 
 	$gutenberg = new Untappd_MB_Gutenberg();
 	$gutenberg->hooks();
+
+	$user_checkins = new Untappd_MB_Gutenberg_User_Checkins();
+	$user_checkins->hooks();
 
 }
 add_action( 'plugins_loaded', 'mb_untappd_widget_init' );
