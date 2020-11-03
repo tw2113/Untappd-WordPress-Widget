@@ -10,12 +10,30 @@ class Untappd_MB_Gutenberg {
 
 		wp_register_script(
 			'untappd-mb-gutenberg',
-			plugin_dir_url( __DIR__ ) . 'assets/js/build.js',
+			plugin_dir_url( __DIR__ ) . 'build/index.js',
 			[ 'wp-blocks', 'wp-element', 'wp-i18n' ],
 			'1.4.0',
 			true
 		);
 
+		wp_register_style(
+			'untappd-mb-gutenberg-editor',
+			plugin_dir_url( __DIR__ ) . 'build/editor.css',
+			[],
+			'1.4.0',
+			true
+		);
+
+		wp_register_style(
+			'untappd-mb-gutenberg-frontend',
+			plugin_dir_url( __DIR__ ) . 'build/style.css',
+			[],
+			'1.4.0',
+			true
+		);
+
 		wp_enqueue_script( 'untappd-mb-gutenberg' );
+		wp_enqueue_style( 'untappd-mb-gutenberg-editor' );
+		wp_enqueue_style( 'untappd-mb-gutenberg-frontend' );
 	}
 }
