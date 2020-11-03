@@ -2,15 +2,15 @@ const Save = (props) => {
 	const {
 		attributes: {
 			userName,
+			title,
+			limit,
 		},
 		className
 	} = props;
 
 	return (
 		<div className={className}>
-			{userName && (
-				<p>{userName}</p>
-			)}
+			<p>{title} {userName} {limit}</p>
 		</div>
 	);
 };
