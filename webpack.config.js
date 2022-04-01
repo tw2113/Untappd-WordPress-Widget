@@ -1,49 +1,32 @@
-const path = require( 'path' );
-const pluginConfig = require('./plugin-config');
-const isProduction = 'production' === process.env.NODE_ENV;
-const host = isProduction ? pluginConfig.localURL : pluginConfig.watchURL;
+/**
+ * Internal Dependencies.
+ */
+const defaultConfig = require('@wordpress/scripts/config/webpack.config');
+const glob = require('glob');
 
-const config = {
-	mode     : isProduction ? 'production' : 'development',
-	entry    : {
-		'./build'    : ['./assets/blocks/latest-checkins/index.js']
-	},
-	output   : {
-		filename  : isProduction ? '[name].min.js' : '[name].js',
-		path: path.resolve( __dirname ),
-	},
-	module   : {
-		rules: [
-			{
-				test   : /\.jsx?$/,
-				exclude: /(node_modules)/,
-				use    : {
-					loader : 'babel-loader',
-					options: {
-						presets: [
-							[
-								'@babel/preset-env',
-								{
-									'targets': {
-										'browsers': ['last 2 versions', 'ie 11']
-									}
-								}
-							],
-							'@babel/preset-react'
-						]
-					}
-				}
-			}
-		]
-	},
-	plugins  : [],
-	devtool  : isProduction ? 'source-map' : 'cheap-module-eval-source-map',
-	externals: {
-		$     : 'jQuery',
-		jQuery: 'jQuery',
-		jquery: 'jQuery',
-		lodash: 'lodash'
-	}
+/**
+ * External Dependencies.
+ */
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const IgnoreEmitPlugin = require('ignore-emit-webpack-plugin');
+
+const entry = {
+	...defaultConfig.entry,
 };
 
-module.exports = config;
+const frontendScript = glob.sync('./src/frontend.js');
+if (frontendScript.length) {
+	entry.frontend = frontendScript;
+}
+
+module.exports = {
+	...defaultConfig,
+	entry,
+	plugins: [
+		...defaultConfig.plugins,
+		new CleanWebpackPlugin(),
+		new IgnoreEmitPlugin([
+			'frontend.asset.php',
+		]),
+	],
+};
