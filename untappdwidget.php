@@ -68,13 +68,6 @@ function mb_untappd_widget_init() {
 	require_once 'widgets/venue_checkins.php';
 	require_once 'widgets/user_badge.php';
 	require_once 'widgets/user_profile.php';
-
-	require_once 'classes/class-gutenberg-block.php';
-	require_once 'classes/class-gutenberg.php';
-
-	$gutenberg = new Untappd_MB_Gutenberg();
-	$gutenberg->hooks();
-
 }
 add_action( 'plugins_loaded', 'mb_untappd_widget_init' );
 
@@ -88,4 +81,76 @@ function mb_untappd_settings_page_notification() {
 		'<p>%s</p>',
 		esc_html__( 'Client API keys can now be set on our settings page.', 'mb_untappd' )
 	);
+}
+
+function mb_untappd_register_blocks() {
+
+	// Define our assets.
+	$editor_script   = './build/index.js';
+	$editor_style    = './build/index.css';
+	$frontend_style  = './build/style-index.css';
+	$frontend_script = './build/frontend.js';
+
+	// Verify we have an editor script.
+	if ( ! file_exists( plugin_dir_path( __FILE__ ) . $editor_script ) ) {
+		wp_die( esc_html__( 'Whoops! You need to run `npm run build` first.', 'mb_untappd' ) );
+	}
+
+	// Autoload dependencies and version.
+	$asset_file = require plugin_dir_path( __FILE__ ) . './build/index.asset.php';
+
+	// Register editor script.
+	wp_register_script(
+		'untappd-mb-editor-script',
+		plugins_url( $editor_script, __FILE__ ),
+		$asset_file['dependencies'],
+		$asset_file['version'],
+		true
+	);
+
+	// Register editor style.
+	if ( file_exists( plugin_dir_path( __FILE__ ) . $editor_style ) ) {
+		wp_register_style(
+			'untappd-mb-editor-style',
+			plugins_url( $editor_style, __FILE__ ),
+			[ 'wp-edit-blocks' ],
+			filemtime( plugin_dir_path( __FILE__ ) . $editor_style )
+		);
+	}
+
+	// Register frontend style.
+	if ( file_exists( plugin_dir_path( __FILE__ ) . $frontend_style ) ) {
+		wp_register_style(
+			'untappd-mb-style',
+			plugins_url( $frontend_style, __FILE__ ),
+			[],
+			filemtime( plugin_dir_path( __FILE__ ) . $frontend_style )
+		);
+	}
+
+	// Register block with WordPress.
+	register_block_type( 'untappd-mb-gutenberg/latest-checkins', [
+		'editor_script'   => 'untappd-mb-editor-script',
+		'editor_style'    => 'untappd-mb-editor-style',
+		'style'           => 'untappd-mb-style',
+		'render_callback' => 'mb_untappd_latest_checkins_cb',
+	] );
+
+	// Register frontend script.
+	if ( file_exists( plugin_dir_path( __FILE__ ) . $frontend_script ) ) {
+		wp_enqueue_script(
+			'untappd-mb-frontend-script',
+			plugins_url( $frontend_script, __FILE__ ),
+			$asset_file['dependencies'],
+			$asset_file['version'],
+			true
+		);
+	}
+}
+add_action( 'init', 'mb_untappd_register_blocks' );
+
+function mb_untappd_latest_checkins_cb( $attributes ) {
+	ob_start();
+	echo $attributes['title']  . ': ' . $attributes['userName'];
+	return ob_get_clean();
 }

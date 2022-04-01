@@ -1,11 +1,8 @@
-import attributes from './attributes';
-
-const { __ } = wp.i18n;
-const {
-	registerBlockType,
-} = wp.blocks;
-
-import LatestCheckins from '../components/latest-checkins';
+import attributes from './attributes'
+import edit from './edit'
+import './style.scss'
+import {__} from '@wordpress/i18n'
+import {registerBlockType} from '@wordpress/blocks'
 
 export default registerBlockType('untappd-mb-gutenberg/latest-checkins', {
 	title: __( 'Untappd Latest User Checkins', 'mb_untappd' ),
@@ -15,18 +12,9 @@ export default registerBlockType('untappd-mb-gutenberg/latest-checkins', {
 		__( 'Checkin', 'mb_untappd' )
 	],
 	attributes,
-	edit: props => {
-		const { setAttributes } = props;
-		return(
-			<LatestCheckins { ...{ setAttributes, ...props }} />
-		);
+	edit,
+	save: () => {
+		// Server side rendering via template function.
+		return null;
 	},
-	save: props => {
-		const { attributes } = props;
-		return (
-			<div>
-				attributes
-			</div>
-		)
-	}
 });
