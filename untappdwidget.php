@@ -56,12 +56,18 @@ function mb_untappd_widget_init() {
 	load_plugin_textdomain( 'mb_untappd', false, dirname( plugin_basename( __FILE__ ) . '/languages/' ) );
 
 	require_once 'classes/class-mb-untappd-settings.php';
+	require_once 'classes/interface-mb-untappd-templates.php';
 	require_once 'classes/class-mb-untappd-api.php';
-	require_once 'classes/class-mb-untappd-badges-api.php';
+	require_once 'classes/class-mb-untappd-user-badge-api.php';
+	require_once 'classes/class-mb-untappd-user-badge-template.php';
 	require_once 'classes/class-mb-untappd-user-checkins-api.php';
+	require_once 'classes/class-mb-untappd-user-checkins-template.php';
 	require_once 'classes/class-mb-untappd-user-profile-api.php';
-	require_once 'classes/class-mb-untappd-brewery-checkins-api.php';
-	require_once 'classes/class-mb-untappd-venue-checkins-api.php';
+	require_once 'classes/class-mb-untappd-user-profile-template.php';
+	require_once 'classes/class-mb-untappd-recent-brewery-checkins-api.php';
+	require_once 'classes/class-mb-untappd-recent-brewery-template.php';
+	require_once 'classes/class-mb-untappd-recent-venue-checkins-api.php';
+	require_once 'classes/class-mb-untappd-recent-venue-template.php';
 
 	require_once 'widgets/user_checkins.php';
 	require_once 'widgets/brewery_checkins.php';
@@ -136,6 +142,34 @@ function mb_untappd_register_blocks() {
 		'render_callback' => 'mb_untappd_latest_checkins_cb',
 	] );
 
+	register_block_type( 'untappd-mb-gutenberg/user-badge', [
+		'editor_script'   => 'untappd-mb-editor-script',
+		'editor_style'    => 'untappd-mb-editor-style',
+		'style'           => 'untappd-mb-style',
+		'render_callback' => 'mb_untappd_user_badge_cb',
+	] );
+
+	register_block_type( 'untappd-mb-gutenberg/recent-breweries', [
+		'editor_script'   => 'untappd-mb-editor-script',
+		'editor_style'    => 'untappd-mb-editor-style',
+		'style'           => 'untappd-mb-style',
+		'render_callback' => 'mb_untappd_recent_breweries_cb',
+	] );
+
+	register_block_type( 'untappd-mb-gutenberg/recent-venues', [
+		'editor_script'   => 'untappd-mb-editor-script',
+		'editor_style'    => 'untappd-mb-editor-style',
+		'style'           => 'untappd-mb-style',
+		'render_callback' => 'mb_untappd_recent_venues_cb',
+	] );
+
+	register_block_type( 'untappd-mb-gutenberg/user-profile', [
+		'editor_script'   => 'untappd-mb-editor-script',
+		'editor_style'    => 'untappd-mb-editor-style',
+		'style'           => 'untappd-mb-style',
+		'render_callback' => 'mb_untappd_user_profile_cb',
+	] );
+
 	// Register frontend script.
 	if ( file_exists( plugin_dir_path( __FILE__ ) . $frontend_script ) ) {
 		wp_enqueue_script(
@@ -151,6 +185,34 @@ add_action( 'init', 'mb_untappd_register_blocks' );
 
 function mb_untappd_latest_checkins_cb( $attributes ) {
 	ob_start();
-	echo $attributes['title']  . ': ' . $attributes['userName'];
+	require_once 'src/blocks/latest-checkins/latest-checkins-frontend.php';
+	return ob_get_clean();
+}
+
+function mb_untappd_user_badge_cb( $attributes ) {
+	ob_start();
+	require_once 'src/blocks/user-badge/user-badge-frontend.php';
+
+	return ob_get_clean();
+}
+
+function mb_untappd_recent_breweries_cb( $attributes ) {
+	ob_start();
+	require_once 'src/blocks/recent-brewery/recent-brewery-frontend.php';
+
+	return ob_get_clean();
+}
+
+function mb_untappd_recent_venues_cb( $attributes ) {
+	ob_start();
+	require_once 'src/blocks/recent-venue/recent-venue-frontend.php';
+
+	return ob_get_clean();
+}
+
+function mb_untappd_user_profile_cb( $attributes ) {
+	ob_start();
+	require_once 'src/blocks/user-profile/user-profile-frontend.php';
+
 	return ob_get_clean();
 }

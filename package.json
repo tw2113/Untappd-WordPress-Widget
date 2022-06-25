@@ -8,11 +8,18 @@
     "dev": "wp-scripts start",
     "watch": "wp-scripts start",
     "build": "wp-scripts build",
+    "build:release": "run-s pot styles uglify create:release",
     "lint:css": "wp-scripts lint-style && ./node_modules/.bin/sass-lint --config ./node_modules/@webdevstudios/css-coding-standards/.sass-lint.yml '**/*.scss' --verbose",
-    "lint:js": "wp-scripts lint-js",
+    "lint:js": "wp-scripts lint-js ./src",
     "lint:php": "./vendor/bin/phpcs --standard=./.phpcs.xml.dist --extensions=php ./ --ignore='./build/*,./node_modules/*,./vendor/*'",
     "packages-update": "wp-scripts packages-update",
-    "postinstall": "wp-scripts build"
+    "postinstall": "wp-scripts build",
+    "pot": "wp-pot --src './*.php' --src './classes/*.php' --src './inc/*.php' --src './templates/*.php' --dest-file 'languages/cptuiext.pot' --team 'Pluginize <support@pluginize.com>' --domain 'cptuiext' --package 'Custom Post Type UI Extended'",
+    "styles": "run-s styles:compile styles:compress",
+    "styles:compile": "node-sass assets/sass/style.scss -o assets/css/ --source-map true",
+    "styles:compress": "node-sass assets/css/style.css assets/css/style.min.css --output-style compressed",
+    "uglify": "uglifyjs assets/js/concat/*.js --beautify -o assets/js/plugin.js && uglifyjs assets/js/concat/*.js -m -c -o assets/js/plugin.min.js",
+    "create:release": "mkdirp cptui-extended && cp -R assets build classes inc languages templates vendor loader.php readme.txt cptui-extended"
   },
   "repository": {
     "type": "git",
@@ -28,7 +35,6 @@
     "@webdevstudios/css-coding-standards": "^1.0.1",
     "@webdevstudios/js-coding-standards": "^1.3.0",
     "@wordpress/scripts": "^22.3.0",
-    "acorn": "^8.7.0",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.1",
     "css-mqpacker": "^7.0.0",
@@ -36,12 +42,15 @@
     "ignore-emit-webpack-plugin": "^2.0.6",
     "mini-css-extract-plugin": "^2.6.0",
     "node-sass": "^7.0.1",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.4.12",
     "postcss-loader": "^6.2.1",
     "postcss-safe-parser": "^6.0.0",
     "sass-loader": "^12.6.0",
     "style-loader": "^3.3.1",
-    "webpack": "^5.70.0"
+    "uglify-js": "^3.15.4",
+    "webpack": "^5.70.0",
+    "wp-pot-cli": "^1.5.0"
   },
   "eslintConfig": {
     "extends": [
