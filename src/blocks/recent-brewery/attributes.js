@@ -2,10 +2,10 @@ const attributes = {
 	title: {
 		type: 'string',
 	},
-	username: {
+	limit: {
 		type: 'string',
 	},
-	limit: {
+	brewery: {
 		type: 'string',
 	}
 };

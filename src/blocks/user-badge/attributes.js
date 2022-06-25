@@ -4,9 +4,6 @@ const attributes = {
 	},
 	username: {
 		type: 'string',
-	},
-	limit: {
-		type: 'string',
 	}
 };
 export default attributes;
